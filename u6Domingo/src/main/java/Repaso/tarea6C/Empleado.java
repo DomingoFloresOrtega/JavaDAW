@@ -8,16 +8,16 @@ package Repaso.tarea6C;
  *
  * @author domingo
  */
-public abstract class Empleado {
+public abstract class Empleado extends Persona {
     private String numeroSeguridadSocial;
     private double salario;
 
     public Empleado() {
     }
 
-    public Empleado(String numeroSeguridadSocial, double salario) {
+    public Empleado(String nombre, String apellidos, NIF nif, String numeroSeguridadSocial) {
+        super(nombre, apellidos, nif);
         this.numeroSeguridadSocial = numeroSeguridadSocial;
-        this.salario = salario;
     }
 
     public String getNumeroSeguridadSocial() {
