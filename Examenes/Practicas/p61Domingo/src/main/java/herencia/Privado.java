@@ -45,6 +45,9 @@ public class Privado extends Centro {
         if (getClass() != obj.getClass()) {
             return false;
         }
+        if (super.equals(obj)){
+            return false;
+        }
         final Privado other = (Privado) obj;
         return this.plazas == other.plazas;
     }
