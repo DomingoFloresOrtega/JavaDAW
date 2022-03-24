@@ -16,25 +16,22 @@ public class Palindromo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        separarLetras("holaloh");
-    }
-    
-    public static void separarLetras(String palabra){
-        ArrayList<Character> lista = new ArrayList<>();
-        for (int i = 0; i < palabra.length(); i++) {
-            lista.add(palabra.charAt(i));
+        if (esPalindromo("memoomem")){
+            System.out.println("Es palindromo");
+        } else {
+            System.out.println("No es palindromo");
         }
     }
 
-    public static void revisarLetras(ArrayList<Character> lista) {
-        for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i) == lista.get(lista.size()-1)) {
-                System.out.println("Ho");
-            } else{
-                System.out.println("La");
+    public static boolean esPalindromo(String palabra){
+        if (palabra.length() <= 1){
+            return true;
+        }else{
+            if (palabra.charAt(0) == palabra.charAt(palabra.length() - 1)){
+                return esPalindromo(palabra.substring(1,palabra.length() - 1 ));
+            }else {
+                return false;
             }
         }
-
     }
-
 }
