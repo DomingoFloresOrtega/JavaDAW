@@ -4,6 +4,8 @@
  */
 package Repaso.tarea6C;
 
+import java.util.Random;
+
 /**
  *
  * @author domingo
@@ -33,6 +35,13 @@ public class Paciente extends Persona {
     }
     
     public void tomarMedicina(String medicina){
+        Random random = new Random();
+        boolean curado = random.nextBoolean();
         
+        if (curado = true){
+            System.out.println("El paciente se ha curado");
+        } else {
+            System.out.println("El paciente no se ha curado");
+        }
     }
 }
