@@ -33,10 +33,22 @@ public class Administrativo extends Empleado {
     }
     
     public void registrarDocumento(String nombreDoc){
-        
+        System.out.println("=== Registro de documento ===");
+        System.out.println("Persona que registra el documento: " + this.getNombre() + " " + this.getApellidos());
+        System.out.println("=== DATOS DEL DOCUMENTO ===");
+        System.out.println("Nombre del documento: " + nombreDoc);
+        System.out.println("Hashcode del documento: " + nombreDoc.hashCode());
     }
     
     public double calcularIRPF(){
-        return 3;
+        if (this.grupo.equals("C")){
+            return this.getSalario()*0.175;
+        } else if (this.grupo.equals("D")){
+            return this.getSalario()*0.18;
+        } else if (this.grupo.equals("E")){
+            return this.getSalario()*0.185;
+        } else {
+            return this.getSalario();
+        }
     }
 }
