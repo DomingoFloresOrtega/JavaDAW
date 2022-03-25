@@ -4,6 +4,8 @@
  */
 package Repaso.tarea6C;
 
+import java.util.Objects;
+
 /**
  *
  * @author domingo
@@ -28,6 +30,28 @@ public class Administrativo extends Empleado {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 61 * hash + Objects.hashCode(this.grupo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Administrativo other = (Administrativo) obj;
+        return this.grupo == other.grupo;
+    }
+
+    @Override
     public String toString() {
         return super.toString() + "Administrativo{" + "grupo=" + grupo + '}';
     }
@@ -40,13 +64,14 @@ public class Administrativo extends Empleado {
         System.out.println("Hashcode del documento: " + nombreDoc.hashCode());
     }
     
+    @Override
     public double calcularIRPF(){
-        if (this.grupo.equals("C")){
-            return this.getSalario()*0.175;
-        } else if (this.grupo.equals("D")){
-            return this.getSalario()*0.18;
-        } else if (this.grupo.equals("E")){
-            return this.getSalario()*0.185;
+        if (this.grupo.equals(Grupo.C)){
+            return (this.getSalario()*this.grupo.getIrpf());
+        } else if (this.grupo.equals(Grupo.D)){
+            return this.getSalario()*this.grupo.getIrpf();
+        } else if (this.grupo.equals(Grupo.E)){
+            return this.getSalario()*this.grupo.getIrpf();
         } else {
             return this.getSalario();
         }

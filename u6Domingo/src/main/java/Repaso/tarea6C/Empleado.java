@@ -39,7 +39,7 @@ public abstract class Empleado extends Persona {
 
     @Override
     public String toString() {
-        return "Empleado{" + "numeroSeguridadSocial=" + numeroSeguridadSocial + ", salario=" + salario + '}';
+        return super.toString() + "Empleado{" + "numeroSeguridadSocial=" + numeroSeguridadSocial + ", salario=" + salario + '}';
     }
     
     public abstract double calcularIRPF();

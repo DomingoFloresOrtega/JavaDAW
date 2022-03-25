@@ -4,6 +4,7 @@
  */
 package Repaso.tarea6C;
 
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -27,6 +28,31 @@ public class Paciente extends Persona {
 
     public void setNumeroHistoria(String numeroHistoria) {
         this.numeroHistoria = numeroHistoria;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.numeroHistoria);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        
+        super.equals(obj);
+        
+        final Paciente other = (Paciente) obj;
+        return Objects.equals(this.numeroHistoria, other.numeroHistoria);
     }
 
     @Override

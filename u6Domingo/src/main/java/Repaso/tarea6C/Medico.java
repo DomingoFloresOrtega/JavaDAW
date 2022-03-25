@@ -4,6 +4,8 @@
  */
 package Repaso.tarea6C;
 
+import java.util.Objects;
+
 /**
  *
  * @author domingo
@@ -28,16 +30,43 @@ public class Medico extends Empleado {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.especialidad);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Medico other = (Medico) obj;
+        return Objects.equals(this.especialidad, other.especialidad);
+    }
+
+    @Override
     public String toString() {
         return super.toString() + "Medico{" + "especialidad=" + especialidad + '}';
     }
     
     public void tratar(Paciente paciente, String medicina){
-        
+        System.out.println("El medico " + this.getNombre() + " trata a " + paciente.getNombre() + 
+                " con la medicina " + medicina);
     }
     
     @Override
     public double calcularIRPF(){
-        return 2;
+        if (this.especialidad.equalsIgnoreCase("Cirugia")){
+            return this.getSalario()*0.25;
+        } else {
+            return this.getSalario()*0.235;
+        }
     }
 }
