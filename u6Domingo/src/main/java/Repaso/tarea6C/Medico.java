@@ -29,7 +29,7 @@ public class Medico extends Empleado {
 
     @Override
     public String toString() {
-        return "Medico{" + "especialidad=" + especialidad + '}';
+        return super.toString() + "Medico{" + "especialidad=" + especialidad + '}';
     }
     
     public void tratar(Paciente paciente, String medicina){
@@ -37,5 +37,7 @@ public class Medico extends Empleado {
     }
     
     @Override
-    public abstract double calcularIRPF();
+    public double calcularIRPF(){
+        return 2;
+    }
 }
