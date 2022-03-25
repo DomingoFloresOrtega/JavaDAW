@@ -22,6 +22,12 @@ public class GestionHospital {
         // Creo hospital junto con lista de pacientes y empleados
         Hospital hospital = new Hospital("Hospital Martin", "Calle San Francisco", 1000, crearPaciente(), crearEmpleado());
 
+        // Contrato a un empleado
+        hospital.getEmpleados().add(new Medico("Cirugia","7",4000,"Pablo","Neruda",new NIF('G', "75368711", LocalDate.of(2031, Month.MARCH, 30))));
+        
+        // Ingreso a un paciente
+        hospital.getPacientes().add(new Paciente("10", "Pablo", "Fernandez", new NIF('R', "78521036", LocalDate.of(2039, Month.MARCH, 2))));
+        
         // Trato a un paciente
         for (Empleado lista : hospital.getEmpleados()) {
             if (lista instanceof Medico) {
@@ -72,5 +78,4 @@ public class GestionHospital {
 
         return listaEmpleado;
     }
-
 }
