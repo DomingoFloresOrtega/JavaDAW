@@ -15,9 +15,10 @@ public abstract class Empleado extends Persona {
     public Empleado() {
     }
 
-    public Empleado(String nombre, String apellidos, NIF nif, String numeroSeguridadSocial) {
+    public Empleado(String numeroSeguridadSocial, double salario, String nombre, String apellidos, NIF nif) {
         super(nombre, apellidos, nif);
         this.numeroSeguridadSocial = numeroSeguridadSocial;
+        this.salario = salario;
     }
 
     public String getNumeroSeguridadSocial() {
