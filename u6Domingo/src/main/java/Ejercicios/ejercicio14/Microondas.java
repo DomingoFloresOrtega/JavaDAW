@@ -1,6 +1,6 @@
 package Ejercicios.ejercicio14;
 
-public class Microondas extends Electrodomestico implements Silencioso {
+public class Microondas extends Electrodomestico implements Silencioso, Comparable<Microondas> {
     private double vatios;
 
     public Microondas(double consumo, String modelo) {
@@ -30,5 +30,10 @@ public class Microondas extends Electrodomestico implements Silencioso {
     @Override
     public void silencio() {
         System.out.println("El microondas emite 40dB");
+    }
+
+    @Override
+    public int compareTo(Microondas o) {
+        return 0;
     }
 }

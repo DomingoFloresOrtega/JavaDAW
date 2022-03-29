@@ -8,7 +8,7 @@ package Ejercicios.ejercicio14;
  *
  * @author domingo
  */
-public class Frigorifico extends Electrodomestico implements Silencioso {
+public class Frigorifico extends Electrodomestico implements Silencioso, Comparable<Frigorifico> {
     private double capacidad;
 
     public Frigorifico(double consumo, String modelo) {
@@ -35,5 +35,10 @@ public class Frigorifico extends Electrodomestico implements Silencioso {
     
     public void silencio(){
         System.out.println("El frigorifico emite 50dB");
+    }
+
+    @Override
+    public int compareTo(Frigorifico o) {
+        return 0;
     }
 }
