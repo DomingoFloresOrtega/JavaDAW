@@ -51,15 +51,15 @@ public class Test {
         listaIdentificable.add(p1);
         listaIdentificable.add(p2);
         
-        for (Persona obj : listaPersona) {
-            System.out.println(obj.toString());
-            obj.identificate();
+        for (Identificable obj2 : listaIdentificable) {
+            obj2.identificate();
             
             // Llamo a metodos personales
-            if (obj instanceof Estudiante){
-                System.out.println("ID: " + ((Estudiante) obj).getId());
-            } else if (obj instanceof Profesor){
-                System.out.println("Especialidad: " + ((Profesor) obj).getEspecialidad());
+            if (obj2 instanceof Estudiante){
+                System.out.println(obj2.getClass()); // Da el paquete y la clase donde esta contenido
+                System.out.println("ID: " + ((Estudiante) obj2).getId());
+            } else if (obj2 instanceof Profesor){
+                System.out.println("Especialidad: " + ((Profesor) obj2).getEspecialidad());
             }
         }
     }  
