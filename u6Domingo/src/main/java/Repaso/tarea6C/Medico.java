@@ -59,6 +59,7 @@ public class Medico extends Empleado {
     public void tratar(Paciente paciente, String medicina){
         System.out.println("El medico " + this.getNombre() + " trata a " + paciente.getNombre() + 
                 " con la medicina " + medicina);
+        paciente.tomarMedicina(medicina);
     }
     
     @Override

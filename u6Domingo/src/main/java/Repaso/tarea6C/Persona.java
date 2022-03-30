@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public abstract class Persona {
     private String nombre;
     private String apellidos;
-    private NIF nif;
+    private NIF nif; // En caso de poner final, se pueden cambiar los atributos internos
 
     public Persona() {
     }
@@ -54,6 +54,6 @@ public abstract class Persona {
     }
     
     public void renovarNIF(LocalDate fechaSolicitud){
-        nif.renovar(fechaSolicitud);
+        this.nif.renovar(fechaSolicitud); // <-- ¡Cuidado con this!
     }
 }
