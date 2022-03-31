@@ -11,8 +11,8 @@ import java.util.ArrayList;
  * @author domingo
  */
 public class Vuelo {
-    private int codigo;
-    private String ciudad;
+    private int codigoVuelo;
+    private String ciudadOrigen;
     private String ciudadDestino;
     private double duracion;
     private ArrayList<Persona> pasajeros;
