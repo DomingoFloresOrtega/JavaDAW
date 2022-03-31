@@ -15,5 +15,7 @@ public class Vuelo {
     private String ciudad;
     private String ciudadDestino;
     private double duracion;
-    private ArrayList<Pasajero> pasajeros;
+    private ArrayList<Persona> pasajeros;
+    
+    
 }
