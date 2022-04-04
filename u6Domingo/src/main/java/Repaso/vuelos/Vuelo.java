@@ -17,5 +17,7 @@ public class Vuelo {
     private double duracion;
     private ArrayList<Persona> pasajeros;
     
-    
+    public void numeroPasajeroDestino(){
+        
+    }
 }
