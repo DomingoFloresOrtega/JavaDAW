@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author domingo
  */
 public class Vuelo {
-    private int codigoVuelo;
+    private String codigoVuelo;
     private String ciudadOrigen;
     private String ciudadDestino;
     private double duracion;
@@ -21,7 +21,7 @@ public class Vuelo {
     public Vuelo() {
     }
 
-    public Vuelo(int codigoVuelo, String ciudadOrigen, String ciudadDestino, double duracion, ArrayList<Persona> pasajeros) {
+    public Vuelo(String codigoVuelo, String ciudadOrigen, String ciudadDestino, double duracion, ArrayList<Persona> pasajeros) {
         this.codigoVuelo = codigoVuelo;
         this.ciudadOrigen = ciudadOrigen;
         this.ciudadDestino = ciudadDestino;
@@ -29,11 +29,11 @@ public class Vuelo {
         this.pasajeros = pasajeros;
     }
 
-    public int getCodigoVuelo() {
+    public String getCodigoVuelo() {
         return codigoVuelo;
     }
 
-    public void setCodigoVuelo(int codigoVuelo) {
+    public void setCodigoVuelo(String codigoVuelo) {
         this.codigoVuelo = codigoVuelo;
     }
 
@@ -77,7 +77,7 @@ public class Vuelo {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + this.codigoVuelo;
+        hash = 83 * hash + Objects.hashCode(this.codigoVuelo);
         hash = 83 * hash + Objects.hashCode(this.ciudadOrigen);
         hash = 83 * hash + Objects.hashCode(this.ciudadDestino);
         hash = 83 * hash + (int) (Double.doubleToLongBits(this.duracion) ^ (Double.doubleToLongBits(this.duracion) >>> 32));
