@@ -97,10 +97,10 @@ public class Vuelo {
             return false;
         }
         final Vuelo other = (Vuelo) obj;
-        if (this.codigoVuelo != other.codigoVuelo) {
+        if (Double.doubleToLongBits(this.duracion) != Double.doubleToLongBits(other.duracion)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.duracion) != Double.doubleToLongBits(other.duracion)) {
+        if (!Objects.equals(this.codigoVuelo, other.codigoVuelo)) {
             return false;
         }
         if (!Objects.equals(this.ciudadOrigen, other.ciudadOrigen)) {
@@ -111,6 +111,4 @@ public class Vuelo {
         }
         return Objects.equals(this.pasajeros, other.pasajeros);
     }
-    
-    
 }
