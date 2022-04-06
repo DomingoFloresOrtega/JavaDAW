@@ -36,7 +36,7 @@ public class Test {
     
      public static Map<String, Integer> pasajerosDestino(ArrayList<Vuelo> listaVuelos) {
 
-        Map<String, Integer> vuelosDestino = new HashMap<>();
+        Map<String, Integer> vuelosDestino = new HashMap<>(); // Conversión implicita
 
         for (Vuelo v : listaVuelos) {
             int n = v.getPasajeros().size();
