@@ -23,12 +23,12 @@ public class Main {
         String idFichero = "teclado.txt";
         Scanner teclado = new Scanner(System.in);
         Boolean terminar = true;
-        
+
         try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
             while (terminar){
                 System.out.println("Introduzca texto:");
                 String texto = teclado.nextLine();
-                
+
                 if (texto.equals("EOF")){
                     terminar = false;
                 } else {
@@ -36,7 +36,7 @@ public class Main {
                     flujo.newLine();
                 }
             }
-            
+
             flujo.flush();
             System.out.println("Fichero " + idFichero + " generado correctamente.");
         } catch (IOException e) {
