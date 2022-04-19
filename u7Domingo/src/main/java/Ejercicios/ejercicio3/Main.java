@@ -25,7 +25,7 @@ public class Main {
         String abecedario = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
         
         try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
-            for(int i = 0; i <= 75;i++){
+            for(int i = 0; i <= 74;i++){
                 int numeroAleatorio = numero.nextInt(abecedario.length());
                 Character letra = abecedario.charAt(numeroAleatorio);
                 if (letra.equals('G') || letra.equals('g')){
@@ -33,6 +33,7 @@ public class Main {
                     flujo.newLine();
                 } else {
                     flujo.write(letra + ";");
+                    i--;
                 } 
             }
             
