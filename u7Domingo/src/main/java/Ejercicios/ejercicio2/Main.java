@@ -29,7 +29,7 @@ public class Main {
                 System.out.println("Introduzca texto:");
                 String texto = teclado.nextLine();
 
-                if (texto.equals("EOF")){
+                if (texto.equalsIgnoreCase("EOF")){
                     terminar = false;
                 } else {
                     flujo.write(texto);
