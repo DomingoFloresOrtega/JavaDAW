@@ -6,6 +6,7 @@ package Ejercicios.ejercicio5;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -19,23 +20,28 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        String idFichero = "fichero.txt";
-
+        String idFichero = "matriz.txt";
         String[] tokens;
         String linea;
+        int valor = 0;
+        int suma = 0;
 
         try ( Scanner datosFichero = new Scanner(new File(idFichero), "UTF-8")) {
             while (datosFichero.hasNextLine()) {
                 linea = datosFichero.nextLine();
 
-                tokens = linea.split(";");
+                tokens = linea.split("\t");
                 for (String string : tokens) {
-                    System.out.print(string + "\t");
+                    valor += Integer.parseInt(string);
                 }
-                System.out.println();
+                
+                suma += valor;
+                valor = 0;
             }
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
+        
+        System.out.println("La suma del array es: " + suma);
     }
 }
