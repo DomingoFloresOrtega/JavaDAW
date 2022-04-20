@@ -33,4 +33,9 @@ public class Turismo extends Vehiculo {
     public String getAtributos() {
         return super.getAtributos() + " Puertas: " + this.puertas + " Marcha automática: " + this.marchaAutomatica;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Turismo{" + "puertas=" + puertas + ":marchaAutomatica=" + marchaAutomatica + '}';
+    }
 }

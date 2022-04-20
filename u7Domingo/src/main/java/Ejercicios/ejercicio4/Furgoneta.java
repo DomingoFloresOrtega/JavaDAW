@@ -33,4 +33,8 @@ public class Furgoneta extends Vehiculo {
                 + " Volumen (m3): " + this.volumen;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "Furgoneta{" + "carga=" + carga + ", volumen=" + volumen + '}';
+    }
 }

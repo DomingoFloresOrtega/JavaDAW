@@ -24,4 +24,9 @@ public class Deportivo extends Vehiculo {
     public String getAtributos() {
         return super.getAtributos() + " Cilindrada (cm3): " + this.cilindrada;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Deportivo{" + "cilindrada=" + cilindrada + '}';
+    }
 }
