@@ -19,24 +19,22 @@ public class Main {
      */
     public static void main(String[] args) {
 
+        // Creo variables
         String idFichero = "matriz.txt";
-        String tmp;
-
-        int numVar;
-
+        int numero;
         int matriz[][] = new int[4][4];
 
-        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
+        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
             for (int i = 0; i < matriz.length; i++) {
-                numVar = 100 * (i + 1);
-                matriz[i][0] = numVar;
+                numero = 100 * (i + 1);
+                matriz[i][0] = numero;
 
                 for (int j = 0; j < matriz[i].length; j++) {
-                    matriz[i][j] = numVar + j;
-                    tmp = String.valueOf(matriz[i][j]);
-                    flujo.write(tmp + "\t");
+                    matriz[i][j] = numero + j;
+                    flujo.write(String.valueOf(matriz[i][j]) + "\t");
                 }
 
+                // Inserto nueva linea
                 flujo.newLine();
             }
 
