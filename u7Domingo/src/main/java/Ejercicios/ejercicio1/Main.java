@@ -4,6 +4,10 @@
  */
 package Ejercicios.ejercicio1;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  *
  * @author domingo
@@ -14,7 +18,32 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        String idFichero = "matriz.txt";
+        String tmp;
+
+        int numVar;
+
+        int matriz[][] = new int[4][4];
+
+        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
+            for (int i = 0; i < matriz.length; i++) {
+                numVar = 100 * (i + 1);
+                matriz[i][0] = numVar;
+
+                for (int j = 0; j < matriz[i].length; j++) {
+                    matriz[i][j] = numVar + j;
+                    tmp = String.valueOf(matriz[i][j]);
+                    flujo.write(tmp + "\t");
+                }
+
+                flujo.newLine();
+            }
+
+            flujo.flush();
+            System.out.println("Fichero " + idFichero + " creado correctamente.");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
-    
 }
