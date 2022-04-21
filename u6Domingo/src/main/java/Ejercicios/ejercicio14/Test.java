@@ -13,8 +13,8 @@ public class Test {
         // lista.add(c1); // No se puede agregar a la lista ya que el objeto CampanaExtractora no es un objeto de tipo Silencioso
         lista.add(f1);
         lista.add(m1);
-        
+
         // Comparable -> Orden natural
-        // Comparator -> 
+        // Comparator ->
     }
 }
