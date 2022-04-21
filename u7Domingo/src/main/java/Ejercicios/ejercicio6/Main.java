@@ -21,15 +21,22 @@ public class Main {
         String idFichero = "vehiculos.txt";
         String[] tokens;
         String linea;
+        int posicion = 0;
 
         try ( Scanner datosFichero = new Scanner(new File(idFichero), "UTF-8")) {
             while (datosFichero.hasNextLine()) {
                 linea = datosFichero.nextLine();
 
-                tokens = linea.split("\n");
-                for (String string : tokens) {
-                    System.out.println(string);
+                posicion = -1;
+                tokens = linea.split(";");
+                for (int i = 0; i < tokens.length-2; i++) {
+                    if (tokens[i].equalsIgnoreCase("w")&&tokens[i+1].equalsIgnoreCase("e")
+                            &&tokens[i+2].equalsIgnoreCase("b")){
+                        posicion = 1;
+                    }
                 }
+                
+                System.out.println(posicion);
             }
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
