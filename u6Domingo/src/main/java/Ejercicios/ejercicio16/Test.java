@@ -40,6 +40,7 @@ public class Test {
 
         // Imprimir el numero de serie de los tres robots
         for (Robot robot : lista) {
+            Collections.reverseOrder();
             System.out.println(robot);
         }
     }
