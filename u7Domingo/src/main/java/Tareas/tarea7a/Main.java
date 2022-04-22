@@ -4,10 +4,6 @@
  */
 package Tareas.tarea7a;
 
-import Ejercicios.ejercicio4.Deportivo;
-import Ejercicios.ejercicio4.Turismo;
-import Ejercicios.ejercicio4.Vehiculo;
-
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -37,7 +33,10 @@ public class Main {
         String[] tokens;
         String linea;
         ArrayList<Pojo> lista = new ArrayList<>();
+        Map<String, Integer> listaProfesores = new HashMap();
+        Map<String, Integer> listaMap = new TreeMap();
 
+        // Lectura de fichero y guardado en lista
         try (Scanner datosFichero = new Scanner(new File(idFichero), "ISO-8859-1")) {
             datosFichero.nextLine();
             while (datosFichero.hasNextLine()) {
@@ -83,7 +82,6 @@ public class Main {
         }
 
         // Convierto lista a map
-        Map<String, Integer> listaProfesores = new HashMap();
         
         int contadorDepartamento = 1;
         for (Pojo profesor : lista) {
@@ -97,7 +95,6 @@ public class Main {
             }
         }
         
-        Map<String, Integer> listaMap = new TreeMap();
         listaMap = listaProfesores;
         
         // Muestro lista por departamento y guardo en archivo
@@ -134,8 +131,7 @@ public class Main {
                     }
                 }
             }
-
-            // Metodo fluh() guarda cambios en disco 
+ 
             flujo.flush();
             System.out.println("Fichero " + idFichero + " creado correctamente.");
         } catch (IOException e) {
