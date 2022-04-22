@@ -11,6 +11,7 @@ import Ejercicios.ejercicio4.Vehiculo;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -103,7 +104,7 @@ public class Main {
         String idFichero2 = "profesoresPorDepartamento.txt";
 
         try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero2))) {
-            flujo.write("Departamentos\tNúmero");
+            flujo.write("Departamentos\tNúmero\n");
             for (String key : listaMap.keySet()) {
                 flujo.write(key + " \t " + listaMap.get(key));
                 flujo.newLine();
@@ -111,6 +112,32 @@ public class Main {
 
             flujo.flush();
             System.out.println("Fichero " + idFichero2 + " generado correctamente.");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        // Guardo en un fichero aquellos empleados que hayan trabajado mas de 100 dias
+        LocalDate fechaini = LocalDate.of(2020, 1, 1);
+        LocalDate fechafin = LocalDate.of(2021, 12, 31);
+        
+        Scanner teclado = new Scanner(System.in);
+        String idFichero3 = "profesoresMasAntiguos.csv";
+
+        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero3))) {
+            flujo.write("Nombre\tDNI/Pasaporte\tPuesto\tFecha de Toma\tFecha de Cese\tTeléfono\tEvaluador\tCoodinador");
+            flujo.newLine();
+            for (Pojo pp : lista) {
+                if (pp.getFechaToma().isAfter(fechaini) && pp.getFechaCese().isBefore(fechafin)) {
+                    if (ChronoUnit.DAYS.between(fechaini, fechafin) >= 100) {
+                        flujo.write(pp.toString());
+                        flujo.newLine();
+                    }
+                }
+            }
+
+            // Metodo fluh() guarda cambios en disco 
+            flujo.flush();
+            System.out.println("Fichero " + idFichero + " creado correctamente.");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
