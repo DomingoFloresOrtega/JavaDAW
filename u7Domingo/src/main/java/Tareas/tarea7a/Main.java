@@ -78,14 +78,14 @@ public class Main {
         }
 
         // Muestro lista por departamento y guardo en archivo
-        String idFichero2 = "vehiculos.txt";
+        String idFichero2 = "profesoresPorDepartamento.txt";
 
         try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero2))) {
             flujo.write("Departamentos\tNúmero");
-            for (String key : lista) {
-                flujo.write(key + " \t " + listita.get(key));
-                flujo.newLine();
-            }
+            //for (String key : lista) {
+            //    flujo.write(key + " \t " + lista.get(key));
+            //    flujo.newLine();
+            //}
 
             flujo.flush();
             System.out.println("Fichero " + idFichero2 + " generado correctamente.");
