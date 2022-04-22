@@ -137,5 +137,10 @@ public class Main {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        
+        // Metodos
+        System.out.println("¿Existe el empleado? --> " + Utils.estaEmpleadoPorNombre(lista, "Z")); // Metodo 1
+        System.out.println("Nº de coordinadores en departamento: " + Utils.coordinadoresPorDepartamentos(lista, "Física y Química P.E.S.")); // Metodo 2
+        System.out.println(Utils.empleadosPorNif(lista, "f"));
     }
 }
