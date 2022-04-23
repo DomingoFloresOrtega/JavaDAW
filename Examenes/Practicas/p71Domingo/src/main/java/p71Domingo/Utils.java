@@ -4,6 +4,7 @@
  */
 package p71Domingo;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -50,5 +51,20 @@ public class Utils {
         Collections.sort(lista, (Pojo p1, Pojo p2) -> p1.getEmpleado().compareTo(p2.getEmpleado()));
 
         return listaNif;
+    }
+
+    public static ArrayList<String> empleadosPorFecha(ArrayList<Pojo> lista, LocalDate fecha){
+        ArrayList<String> listaFecha = new ArrayList<>();
+
+        for (Pojo pp : lista) {
+            if (pp.getFechaToma().equals(fecha)) {
+                listaFecha.add(pp.getDni());
+            }
+        }
+
+        Collections.sort(listaFecha);
+        Collections.reverse(listaFecha);
+
+        return listaFecha;
     }
 }
