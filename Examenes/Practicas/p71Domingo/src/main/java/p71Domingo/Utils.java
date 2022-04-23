@@ -38,8 +38,8 @@ public class Utils {
         return contador;
     }
     
-    public static ArrayList<Pojo> empleadosPorNif(ArrayList<Pojo> lista, String letranif){
-        ArrayList<Pojo> listaNif = new ArrayList<>();
+    public static ArrayList<String> empleadosPorNif(ArrayList<Pojo> lista, char letranif){
+        ArrayList<String> listaNif = new ArrayList<>();
 
         for (Pojo pp : lista) {
             if (pp.getDni().contains(String.valueOf(letranif))) {

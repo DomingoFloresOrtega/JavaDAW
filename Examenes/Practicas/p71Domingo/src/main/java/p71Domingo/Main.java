@@ -35,6 +35,7 @@ public class Main {
         ArrayList<Pojo> lista = new ArrayList<>();
         Map<String, Integer> listaProfesores = new HashMap();
         Map<String, Integer> listaMap = new TreeMap();
+        ArrayList<String> listaNif = new ArrayList<>();
 
         // Lectura de fichero y guardado en lista
         try (Scanner datosFichero = new Scanner(new File(idFichero), "ISO-8859-1")) {
@@ -141,6 +142,9 @@ public class Main {
         // Metodos
         System.out.println("¿Existe el empleado? --> " + Utils.estaEmpleadoPorNombre(lista, "Z")); // Metodo 1
         System.out.println("Nº de coordinadores en departamento: " + Utils.coordinadoresPorDepartamentos(lista, "Física y Química P.E.S.")); // Metodo 2
-        System.out.println(Utils.empleadosPorNif(lista, "f"));
+        listaNif = Utils.empleadosPorNif(lista,'F');
+        for (String l : listaNif) {
+            System.out.println(l);
+        }
     }
 }
