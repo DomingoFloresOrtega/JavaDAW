@@ -16,7 +16,10 @@ public class Test2 {
 
     public static void main(String[] args) {
         // Construimos la ventana
-        JFrame ventanaPrincipal = new JFrame("Aplicación");
+        JFrame ventanaPrincipal = new JFrame("Domingo Flores Ortega - 1ºDAW");
+
+        // La ventana no se puede redimensionar
+        ventanaPrincipal.setResizable(false);
 
         // Establecemos posición y tamaño
         ventanaPrincipal.setBounds(250, 250, 800, 600);
@@ -37,13 +40,13 @@ public class Test2 {
 
         // Añadimos los paneles en cada posición del BorderLayout
         // Añadir panel amarillo en la posición superior (NORTH)
-        ventanaPrincipal.add(new MiPanel(Color.yellow), BorderLayout.NORTH);
+        ventanaPrincipal.add(new MiPanel(Color.green), BorderLayout.NORTH);
 
         // Añadir panel rojo en la posición inferior (SOUTH)
-        ventanaPrincipal.add(new MiPanel(Color.red), BorderLayout.SOUTH);
+        ventanaPrincipal.add(new MiPanel(Color.yellow), BorderLayout.SOUTH);
         
         // Añadir panel gris en la posición central (CENTER)
-        ventanaPrincipal.add(new MiPanel(Color.gray), BorderLayout.CENTER);
+        ventanaPrincipal.add(new MiPanel(Color.blue), BorderLayout.CENTER);
 
         // Añadir panel verde en la posición izquierda (WEST)
         ventanaPrincipal.add(new MiPanel(Color.green), BorderLayout.WEST);

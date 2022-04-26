@@ -16,14 +16,14 @@ public class Test {
 
     public static void main(String[] args) {
         // Construimos la ventana
-        JFrame ventanaPrincipal = new JFrame("Aplicación");
+        JFrame ventanaPrincipal = new JFrame("Domingo Flores Ortega - 1ºDAW");
 
         // Establecemos tamaño y posición
         ventanaPrincipal.setSize(800, 600);
         ventanaPrincipal.setLocationRelativeTo(null);
 
         // Añadimos un objeto MiPanel al JFrame
-        ventanaPrincipal.add(new MiPanel(Color.cyan));
+        ventanaPrincipal.add(new MiPanel(Color.red));
 
         // Hacemos visible la ventana
         ventanaPrincipal.setVisible(true);
