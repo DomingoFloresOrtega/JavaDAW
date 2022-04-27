@@ -13,9 +13,20 @@ public class Furgoneta extends Vehiculo {
     private int carga;
     private int volumen;
 
+    public Furgoneta() {
+    }
+
     public Furgoneta(Long bastidor, String matricula, String marca, String modelo, String color, double tarifa, int carga, int volumen) {
         super(bastidor, matricula, marca, modelo, color, tarifa);
         this.carga = carga;
+        this.volumen = volumen;
+    }
+
+    public void setCarga(int carga) {
+        this.carga = carga;
+    }
+
+    public void setVolumen(int volumen) {
         this.volumen = volumen;
     }
 

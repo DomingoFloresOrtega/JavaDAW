@@ -11,8 +11,15 @@ package Ejercicios.ejercicio4;
 public class Deportivo extends Vehiculo {
     private int cilindrada;
 
+    public Deportivo() {
+    }
+
     public Deportivo(Long bastidor, String matricula, String marca, String modelo, String color, double tarifa, int cilindrada) {
         super(bastidor, matricula, marca, modelo, color, tarifa);
+        this.cilindrada = cilindrada;
+    }
+
+    public void setCilindrada(int cilindrada) {
         this.cilindrada = cilindrada;
     }
 
