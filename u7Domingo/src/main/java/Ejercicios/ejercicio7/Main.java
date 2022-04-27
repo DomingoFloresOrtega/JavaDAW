@@ -28,7 +28,7 @@ public class Main {
         String linea;
         ArrayList<Vehiculo> array = new ArrayList<>();
 
-        try ( Scanner datosFichero = new Scanner(new File(idFichero), "UTF-8")) {
+        try (Scanner datosFichero = new Scanner(new File(idFichero), "UTF-8")) {
             while (datosFichero.hasNextLine()) {
                 linea = datosFichero.nextLine();
 
@@ -78,6 +78,16 @@ public class Main {
             }
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
+        }
+
+        // Ordeno lista
+
+        array.sort((a1,a2)->a1.getMarca().compareTo(a2.getMarca()));
+
+        // Muestro lista
+
+        for (Vehiculo v : array) {
+            System.out.println(v.toString());
         }
     }
 }
