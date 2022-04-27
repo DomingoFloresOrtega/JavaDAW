@@ -64,13 +64,13 @@ public class Main {
         try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
             for (Vehiculo v : lista) {
                 if (v instanceof Turismo){
-                    flujo.write("0 - " + v.toString() + ";");
+                    flujo.write("0;" + v.toString() + ";");
                     flujo.newLine();
                 } else if(v instanceof Deportivo){
-                    flujo.write("1 - " + v.toString() + ";");
+                    flujo.write("1;" + v.toString() + ";");
                     flujo.newLine();
                 } else {
-                    flujo.write("2 - " + v.toString() + ";");
+                    flujo.write("2;" + v.toString() + ";");
                     flujo.newLine();
                 } 
             }
