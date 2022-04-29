@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package p71Domingo;
+package p71ConStream;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -33,8 +34,6 @@ public class Main {
         ArrayList<Pojo> lista = new ArrayList<>();
         Map<String, Integer> listaProfesores = new HashMap();
         Map<String, Integer> listaMap = new TreeMap();
-        ArrayList<String> listaNif = new ArrayList<>();
-        ArrayList<String> listaFecha = new ArrayList<>();
 
         // Lectura de fichero y guardado en lista
         try (Scanner datosFichero = new Scanner(new File(idFichero), "ISO-8859-1")) {
@@ -133,17 +132,17 @@ public class Main {
         }
         
         // Metodos
-        System.out.println("¿Existe el empleado? --> " + Utils.estaEmpleadoPorNombre(lista, "Z")); // Metodo 1
+        System.out.println("¿Existe el empleado? --> " + Utils.estaEmpleadoPorNombre(lista, "Zapata Moreno Nerea del Rocío")); // Metodo 1
         System.out.println("Nº de coordinadores en departamento: " + Utils.coordinadoresPorDepartamentos(lista, "Física y Química P.E.S.")); // Metodo 2
         // Metodo 3
         System.out.println("Los empleados con DNI que incluye dicha letra son:");
-        listaNif = Utils.empleadosPorNif(lista,'F');
+        List<String> listaNif = Utils.empleadosPorNif(lista,'F');
         for (String l : listaNif) {
             System.out.println(l);
         }
         // Metodo 4
         System.out.println("Los empleados con la toma de posesión introducida tienen el DNI:");
-        listaFecha = Utils.empleadosPorFecha(lista, LocalDate.of(2006, Month.SEPTEMBER, 1));
+        List<String> listaFecha = Utils.empleadosPorFecha(lista, LocalDate.of(2006, Month.SEPTEMBER, 1));
         for (String p : listaFecha) {
             System.out.println(p);
         }
