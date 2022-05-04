@@ -53,7 +53,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
         
-        // Escribir fichero XML (no se hacerlo)
+        // Escribir fichero XML
         Apps apps = new Apps();
         apps.setAppList(lista);
         try {
