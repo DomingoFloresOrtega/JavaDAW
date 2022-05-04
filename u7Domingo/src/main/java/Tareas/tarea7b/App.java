@@ -5,6 +5,7 @@
 package Tareas.tarea7b;
 
 import java.util.Objects;
+import java.util.Random;
 import java.util.stream.DoubleStream;
 
 /**
@@ -17,15 +18,19 @@ public class App {
     private String descripcion;
     private double kB;
     private int numDescargas;
+    Random random = new Random();
+    String abecedario = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 
     public App() {
         int contador = 0;
+        int numeroAleatorio = random.nextInt(abecedario.length());
+        Character letra = abecedario.charAt(numeroAleatorio);
         
         this.codigoUnico = contador++;
-        this.nombre = "app" + this.codigoUnico + "";
+        this.nombre = "app" + this.codigoUnico + letra;
         this.descripcion = descripcion;
-        this.kB = kB;
-        this.numDescargas = numDescargas;
+        this.kB = random.doubles(1, 100.0, 1024.0).findFirst().getAsDouble();
+        this.numDescargas = random.ints(1, 0, 50000).findFirst().getAsInt();
     }
 
     public App(int codigoUnico, String nombre, String descripcion, double kB, int numDescargas) {
