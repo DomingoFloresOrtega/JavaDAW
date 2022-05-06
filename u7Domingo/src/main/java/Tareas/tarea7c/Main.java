@@ -4,9 +4,13 @@
  */
 package Tareas.tarea7c;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
@@ -48,9 +52,9 @@ public class Main {
                     System.out.println("\n\nInserte un grupo");
                     String grupo = teclado.next();
                     
-                    if(){
+                    //if(){
                     
-                    }
+                    //}
                     break;
                 case 2:
                     break;
@@ -85,6 +89,37 @@ public class Main {
 
         //PARTE A
         menu(listaGrupos, listaProfes);
+        seleccionGrupo(listaGrupos, listaHoras);
+    }
+    
+    public static void seleccionGrupo(Set<String> listaGrupos, ArrayList<Horarios> listaHoras){
+        
+        Scanner teclado = new Scanner(System.in);
+        
+        System.out.println("Mostrando grupos...");
+        for (String l : listaGrupos) {
+            System.out.println(l);
+        }
+        
+        System.out.println("Escriba el grupo que desee");
+        String grupo = teclado.nextLine();
+        
+        // Crear fichero con horario
+        String idFichero = grupo + ".txt";
+        
+        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
+            for (int i = 0; i < listaGrupos.size(); i++){
+                if (listaGrupos.contains(grupo)){
+                    System.out.println("");
+                }
+            }
+            
+            
+            flujo.flush();
+            System.out.println("Fichero " + idFichero + " generado correctamente.");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }
