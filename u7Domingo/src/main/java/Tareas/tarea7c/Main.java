@@ -7,6 +7,9 @@ package Tareas.tarea7c;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  *
@@ -24,14 +27,13 @@ public class Main {
 
     public static void menu(Set<String> listaGrupos, Set<String> listaProfes) {
 
-        //Scanner para usarlo en las opciones
         Scanner teclado = new Scanner(System.in);
         try {
 
-            System.out.println("Inserte 1, 2 o 3 dependiendo de la opción:"
-                    + "\n1.Iniciales del profesorado"
-                    + "\n2.Grupos"
-                    + "\n3.Salir");
+            System.out.println("Seleccione la opción que desee:"
+                    + "\n1. Iniciales del profesorado"
+                    + "\n2. Grupos"
+                    + "\n3. Salir");
 
             int opciones = teclado.nextInt();
 
@@ -43,8 +45,9 @@ public class Main {
                         System.out.println(listaGrupo);
                     }
                     
-                    System.out.println("\n\nInserte un grupo del que quiera un fichero CSV");
+                    System.out.println("\n\nInserte un grupo");
                     String grupo = teclado.next();
+                    
                     if(){
                     
                     }
@@ -68,29 +71,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Estructuras set necesarios para el ejercicio
         Set<String> listaGrupos = new TreeSet<>();
         Set<String> listaProfes = new TreeSet<>();
 
         //Lista de objetos 
-        ArrayList<Horario> listaHoras = leerFicheros("Horario.csv");
+        ArrayList<Horarios> listaHoras = Lectura.leerFicheros("horario.csv");
         ordenarTituloCantante(listaHoras);
 
-        for (Horario listaHora : listaHoras) {
+        for (Horarios listaHora : listaHoras) {
             listaGrupos.add(listaHora.getCurso());
-            listaProfes.add(listaHora.getInicialesProfesor());
+            listaProfes.add(listaHora.getProfesor());
         }
 
         //PARTE A
-        /*
-        
-        Si el usuario selecciona b), el programa mostrará los grupos que hay en el instituto, 
-        para que el usuario elija uno. Una vez proporcionado el grupo, 
-        el programa guardará en un fichero csv, en la raíz del proyecto, 
-        el horario seleccionado, si existe. El nombre del fichero estará compuesto 
-        por las iniciales del grupo en cuestión y la extensión del archivo. 
-        Por ejemplo, para el grupo 1DAW, el archivo se llamará 1DAW.csv.
-         */
         menu(listaGrupos, listaProfes);
     }
 
