@@ -20,6 +20,7 @@ import java.util.TreeSet;
  * @author domingo
  */
 public class Main {
+
     public static void ordenarTituloCantante(ArrayList<Horarios> lista) {
 
         Comparator<Horarios> criterioDia = (Horarios c1, Horarios c2) -> c1.getDiaSemana().compareTo(c2.getDiaSemana());
@@ -43,17 +44,16 @@ public class Main {
 
             switch (opciones) {
                 case 1:
-                    
+
                     System.out.println("");
                     for (String listaGrupo : listaGrupos) {
                         System.out.println(listaGrupo);
                     }
-                    
+
                     System.out.println("\n\nInserte un grupo");
                     String grupo = teclado.next();
-                    
+
                     //if(){
-                    
                     //}
                     break;
                 case 2:
@@ -91,30 +91,36 @@ public class Main {
         menu(listaGrupos, listaProfes);
         seleccionGrupo(listaGrupos, listaHoras);
     }
-    
-    public static void seleccionGrupo(Set<String> listaGrupos, ArrayList<Horarios> listaHoras){
-        
+
+    public static void seleccionGrupo(Set<String> listaGrupos, ArrayList<Horarios> listaHoras) {
+
         Scanner teclado = new Scanner(System.in);
-        
+
         System.out.println("Mostrando grupos...");
         for (String l : listaGrupos) {
             System.out.println(l);
         }
-        
+
         System.out.println("Escriba el grupo que desee");
         String grupo = teclado.nextLine();
-        
+
         // Crear fichero con horario
         String idFichero = grupo + ".txt";
-        
-        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
-            for (int i = 0; i < listaGrupos.size(); i++){
-                if (listaGrupos.contains(grupo)){
-                    System.out.println("");
+
+        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
+            for (int i = 0; i < listaGrupos.size(); i++) {
+                if (listaGrupos.contains(grupo)) {
+                    if (listaHoras.get(i).getCurso().contains(grupo)) {
+                        flujo.write(listaHoras.get(i).getAula() + ";");
+                        flujo.write(listaHoras.get(i).getDiaSemana() + ";");
+                        flujo.write(listaHoras.get(i).getAsigantura() + ";");
+                        flujo.write(listaHoras.get(i).getHora() + ";");
+                        flujo.write(listaHoras.get(i).getProfesor() + ";");
+                        flujo.newLine();
+                    }
                 }
             }
-            
-            
+
             flujo.flush();
             System.out.println("Fichero " + idFichero + " generado correctamente.");
         } catch (IOException e) {
