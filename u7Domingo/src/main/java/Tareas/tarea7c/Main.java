@@ -21,7 +21,7 @@ import java.util.TreeSet;
  */
 public class Main {
 
-    public static void ordenarTituloCantante(ArrayList<Horarios> lista) {
+    public static void ordenarHorario(ArrayList<Horarios> lista) {
 
         Comparator<Horarios> criterioDia = (Horarios c1, Horarios c2) -> c1.getDiaSemana().compareTo(c2.getDiaSemana());
         Comparator<Horarios> criterioHora = (Horarios c1, Horarios c2) -> c1.getHora().compareTo(c2.getHora());
@@ -80,7 +80,7 @@ public class Main {
 
         //Lista de objetos 
         ArrayList<Horarios> listaHoras = Lectura.leerFicheros("horario.csv");
-        ordenarTituloCantante(listaHoras);
+        ordenarHorario(listaHoras);
 
         for (Horarios listaHora : listaHoras) {
             listaGrupos.add(listaHora.getCurso());

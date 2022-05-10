@@ -136,6 +136,6 @@ public class Horarios {
 
     @Override
     public String toString() {
-        return "Horarios{" + "numFila=" + numFila + ", curso=" + curso + ", profesor=" + profesor + ", asigantura=" + asigantura + ", aula=" + aula + ", diaSemana=" + diaSemana + ", hora=" + hora + '}';
+        return numFila + ";" + curso + ";" + profesor + ";" + asigantura + ";" + aula + ";" + diaSemana + ";" + hora + ";";
     }
 }
