@@ -20,6 +20,7 @@ public class App {
     private int numDescargas;
     Random random = new Random();
     String abecedario = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+    private static String[] descripciones = {"Caro", "Barato", "Bonito", "Feo", "Antiguo", "Nuevo"};
 
     public App() {
         int contador = 0;
@@ -28,7 +29,7 @@ public class App {
         
         this.codigoUnico = contador++;
         this.nombre = "app" + this.codigoUnico + letra;
-        this.descripcion = descripcion;
+        this.descripcion = descripciones[random.nextInt(10)];
         this.kB = random.doubles(1, 100.0, 1024.0).findFirst().getAsDouble();
         this.numDescargas = random.ints(1, 0, 50000).findFirst().getAsInt();
     }
