@@ -13,9 +13,9 @@ import javax.swing.*;
  *
  * @author domingo
  */
-public class Saludo extends JPanel implements ActionListener {
+public class Saludo extends JPanel {
 
-    private JButton botonSaludar, botonDespedir;
+    private JButton botonNombre, botonApellidos;
     private JTextArea texto;
 
     public Saludo(){
@@ -24,38 +24,37 @@ public class Saludo extends JPanel implements ActionListener {
 
     private void initComponents(){
 
-        botonSaludar = new JButton("Saludar");
+        // Crear botones
+        botonNombre = new JButton("Nombre");
+        botonApellidos = new JButton("Apellidos");
+        
+        // Modificar texto
         texto = new JTextArea(1,25);
-        texto.setBackground(Color.ORANGE);
+        texto.setBackground(Color.BLUE);
 
         this.setLayout(new FlowLayout());
 
-        this.add(botonSaludar);
+        // Añadimos los botones
+        this.add(botonNombre);
+        this.add(botonApellidos);
         this.add(texto);
 
-        botonSaludar.addActionListener(this);
-
-        // Añadimos el botón al panel
-        this.add(botonDespedir);
-        // Controlador del evento
-        botonDespedir.addActionListener(this);
+        // Le damos funcionalidad
+        
+        botonNombre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                texto.setBackground(Color.ORANGE);
+                texto.setText("Domingo");
+            }
+        });
+        
+        botonApellidos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                texto.setBackground(Color.ORANGE);
+                texto.setText("Flores Ortega");
+            }
+        });
     }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-
-        // Si el botón pulsado es botonSaludar
-        if(ae.getSource() == botonSaludar){
-            texto.setText("Hola amigos!!");
-        } else {
-            texto.setText("Adios amigos!!");
-        }
-    }
-
-
-
-
-}
-
-
 }

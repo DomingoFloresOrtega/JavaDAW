@@ -16,43 +16,24 @@ public class Test {
 
     public static void main(String[] args) {
         // Construimos la ventana
-        JFrame ventanaPrincipal = new JFrame("Domingo Flores Ortega - 1ºDAW");
+        JFrame frame = new JFrame("Domingo Flores Ortega - 1º DAW");
 
         // La ventana no se puede redimensionar
-        ventanaPrincipal.setResizable(false);
+        frame.setResizable(false);
 
-        // Establecemos posición y tamaño
-        ventanaPrincipal.setBounds(250, 250, 800, 600);
+        // Posición de la ventana
+        frame.setLocationRelativeTo(null);
+
+        // Incluimos el panel en la ventana
+        frame.add(new Saludo());
+
+        // Ajusta el frame al contenido
+        frame.pack();
 
         // Hacemos visible la ventana
-        ventanaPrincipal.setVisible(true);
+        frame.setVisible(true);
 
         // Acción por defecto al pulsar el botón de cierre de la ventana
-        ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Establecemos posición y tamaño
-        // ventanaPrincipal.setBounds(250, 250, 800, 600);
-        ventanaPrincipal.setSize(800, 600);
-        ventanaPrincipal.setLocationRelativeTo(null);
-
-        // Establecemos el layout del JFrame
-        ventanaPrincipal.setLayout(new BorderLayout());
-
-        // Añadimos los paneles en cada posición del BorderLayout
-        // Añadir panel amarillo en la posición superior (NORTH)
-        ventanaPrincipal.add(new MiPanel(Color.green), BorderLayout.NORTH);
-
-        // Añadir panel rojo en la posición inferior (SOUTH)
-        ventanaPrincipal.add(new MiPanel(Color.yellow), BorderLayout.SOUTH);
-        
-        // Añadir panel gris en la posición central (CENTER)
-        ventanaPrincipal.add(new MiPanel(Color.blue), BorderLayout.CENTER);
-
-        // Añadir panel verde en la posición izquierda (WEST)
-        ventanaPrincipal.add(new MiPanel(Color.green), BorderLayout.WEST);
-
-        // Añadir panel cián en la posición derecha (EAST)
-        ventanaPrincipal.add(new MiPanel(Color.cyan), BorderLayout.EAST);
-
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
