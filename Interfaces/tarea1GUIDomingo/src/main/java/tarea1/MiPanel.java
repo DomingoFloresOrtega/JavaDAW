@@ -12,6 +12,7 @@ import javax.swing.JPanel;
  *
  * @author domingo
  */
+
 public class MiPanel extends JPanel {
 
     // Añadimos un componente de tipo etiqueta (JLabel)

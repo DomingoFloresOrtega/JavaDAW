@@ -12,6 +12,7 @@ import javax.swing.JFrame;
  *
  * @author domingo
  */
+
 public class Test2 {
 
     public static void main(String[] args) {
@@ -39,20 +40,29 @@ public class Test2 {
         ventanaPrincipal.setLayout(new BorderLayout());
 
         // Añadimos los paneles en cada posición del BorderLayout
-        // Añadir panel amarillo en la posición superior (NORTH)
-        ventanaPrincipal.add(new MiPanel(Color.green), BorderLayout.NORTH);
+        // Añadir panel amarillo en la posición superior con etiqueta distinta (NORTH)
+        MiPanel verde = new MiPanel(Color.green);
+        verde.getEtiqueta().setText("Verde");
+        ventanaPrincipal.add(verde, BorderLayout.NORTH);
 
-        // Añadir panel rojo en la posición inferior (SOUTH)
-        ventanaPrincipal.add(new MiPanel(Color.yellow), BorderLayout.SOUTH);
+        // Añadir panel rojo en la posición inferior con etiqueta distinta (SOUTH)
+        MiPanel amarillo = new MiPanel(Color.yellow);
+        amarillo.getEtiqueta().setText("Amarillo");
+        ventanaPrincipal.add(amarillo, BorderLayout.SOUTH);
         
-        // Añadir panel gris en la posición central (CENTER)
-        ventanaPrincipal.add(new MiPanel(Color.blue), BorderLayout.CENTER);
+        // Añadir panel gris en la posición central con etiqueta distinta (CENTER)
+        MiPanel azul = new MiPanel(Color.blue);
+        azul.getEtiqueta().setText("Azul");
+        ventanaPrincipal.add(azul, BorderLayout.CENTER);
 
-        // Añadir panel verde en la posición izquierda (WEST)
-        ventanaPrincipal.add(new MiPanel(Color.green), BorderLayout.WEST);
+        // Añadir panel verde en la posición izquierda con etiqueta distinta (WEST)
+        MiPanel verde2 = new MiPanel(Color.green);
+        verde2.getEtiqueta().setText("Verde 2");
+        ventanaPrincipal.add(verde2, BorderLayout.WEST);
 
-        // Añadir panel cián en la posición derecha (EAST)
-        ventanaPrincipal.add(new MiPanel(Color.cyan), BorderLayout.EAST);
-
+        // Añadir panel cián en la posición derecha con etiqueta distinta (EAST)
+        MiPanel cyan = new MiPanel(Color.cyan);
+        cyan.getEtiqueta().setText("Cyan");
+        ventanaPrincipal.add(cyan, BorderLayout.EAST);
     }
 }
