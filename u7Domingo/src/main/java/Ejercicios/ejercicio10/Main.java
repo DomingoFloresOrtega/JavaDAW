@@ -121,7 +121,7 @@ public class Main {
                 tokens = linea.split(";");
 
                 for (String v : tokens) {
-                    array.add(v);
+                    // array.add();
                 }
             }
         } catch (FileNotFoundException e) {
