@@ -1,0 +1,202 @@
+[
+  {
+    "Alumno/a": "Alaoui Rodr�guez, Marina",
+    "OACV": 4,
+    "EA": 6,
+    "TII": 8,
+    "TC": 7,
+    "ING": 7,
+    "FOL": 7,
+    "CEAC": 8
+  },
+  {
+    "Alumno/a": "Barreno Akhalaia, Manuel",
+    "OACV": 5,
+    "EA": "APRO",
+    "TII": "APRO",
+    "TC": 2,
+    "ING": "APRO",
+    "FOL": 6,
+    "CEAC": 5
+  },
+  {
+    "Alumno/a": "Becerra Gallardo, Sergio",
+    "OACV": 5,
+    "EA": 7,
+    "TII": 7,
+    "TC": 7,
+    "ING": 6,
+    "FOL": 7,
+    "CEAC": 7
+  },
+  {
+    "Alumno/a": "Cano García, Melany Jos�",
+    "OACV": 5,
+    "EA": "APRO",
+    "TII": "APRO",
+    "TC": 5,
+    "ING": "APRO",
+    "FOL": 5,
+    "CEAC": 6
+  },
+  {
+    "Alumno/a": "Coronel García, Manuela",
+    "OACV": 4,
+    "EA": 6,
+    "TII": 6,
+    "TC": 3,
+    "ING": 5,
+    "FOL": 6,
+    "CEAC": 7
+  },
+  {
+    "Alumno/a": "Delgado Valiente, Ricardo",
+    "OACV": 3,
+    "EA": 5,
+    "TII": 5,
+    "TC": 2,
+    "ING": 5,
+    "FOL": 5,
+    "CEAC": 6
+  },
+  {
+    "Alumno/a": "Fern�ndez C�saro, Manuela",
+    "OACV": 7,
+    "EA": 7,
+    "TII": 8,
+    "TC": 6,
+    "ING": 6,
+    "FOL": 6,
+    "CEAC": 8
+  },
+  {
+    "Alumno/a": "Hernando Matamoros, Dylan",
+    "OACV": 7,
+    "EA": 7,
+    "TII": 7,
+    "TC": 9,
+    "ING": 6,
+    "FOL": 6,
+    "CEAC": 8
+  },
+  {
+    "Alumno/a": "Kharbache Maldonado, Antonio",
+    "OACV": 8,
+    "EA": 9,
+    "TII": 8,
+    "TC": 10,
+    "ING": 8,
+    "FOL": 9,
+    "CEAC": 8
+  },
+  {
+    "Alumno/a": "L�pez García, Paula",
+    "OACV": 6,
+    "EA": 7,
+    "TII": 8,
+    "TC": 6,
+    "ING": 7,
+    "FOL": 7,
+    "CEAC": 8
+  },
+  {
+    "Alumno/a": "L�pez Mu�oz, Jos� Enrique",
+    "OACV": "NE",
+    "EA": "NE",
+    "TII": "NE",
+    "TC": "NE",
+    "ING": "NE",
+    "FOL": "NE",
+    "CEAC": "NE"
+  },
+  {
+    "Alumno/a": "Luque Everett, Susana",
+    "OACV": 5,
+    "EA": 6,
+    "TII": 5,
+    "TC": 2,
+    "ING": 6,
+    "FOL": 6,
+    "CEAC": 7
+  },
+  {
+    "Alumno/a": "Mar�n Berta, Sandra",
+    "OACV": 6,
+    "EA": 8,
+    "TII": 7,
+    "TC": 5,
+    "ING": 5,
+    "FOL": 8,
+    "CEAC": 8
+  },
+  {
+    "Alumno/a": "Moya Otero, Mar�a del Carmen",
+    "OACV": 3,
+    "EA": 5,
+    "TII": 5,
+    "TC": 2,
+    "ING": 5,
+    "FOL": 5,
+    "CEAC": 6
+  },
+  {
+    "Alumno/a": "Nadal Calero, Ant�n",
+    "OACV": 5,
+    "EA": 5,
+    "TII": 6,
+    "TC": 3,
+    "ING": 6,
+    "FOL": 8,
+    "CEAC": 7
+  },
+  {
+    "Alumno/a": "Navarro García, Mar�a",
+    "OACV": 5,
+    "EA": 8,
+    "TII": 6,
+    "TC": 7,
+    "ING": 5,
+    "FOL": 7,
+    "CEAC": 8
+  },
+  {
+    "Alumno/a": "P�rez Caballero, Delia",
+    "OACV": 7,
+    "EA": 8,
+    "TII": 9,
+    "TC": 10,
+    "ING": 8,
+    "FOL": 6,
+    "CEAC": 8
+  },
+  {
+    "Alumno/a": "Rodr�guez Ballesteros, Daniel",
+    "OACV": 8,
+    "EA": 9,
+    "TII": 8,
+    "TC": 8,
+    "ING": 6,
+    "FOL": 8,
+    "CEAC": 8
+  },
+  {
+    "Alumno/a": "Rodr�guez Barranco, Mateo",
+    "OACV": 7,
+    "EA": 9,
+    "TII": 8,
+    "TC": 6,
+    "ING": 7,
+    "FOL": 7,
+    "CEAC": 8
+  },
+  {
+    "Alumno/a": "Santisteban P�rez, Luisa Isabel",
+    "OACV": 8,
+    "EA": 8,
+    "TII": 9,
+    "TC": 7,
+    "ING": 7,
+    "FOL": 7,
+    "CEAC": 9
+  }
+]
