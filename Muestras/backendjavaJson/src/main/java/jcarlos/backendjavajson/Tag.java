@@ -6,9 +6,9 @@
 package jcarlos.backendjavajson;
 
 public class Tag{
-    public int tag_id;
-    public String name;
-    public String nicename;
+    private int tag_id;
+    private String name;
+    private String nicename;
 
     public int getTag_id() {
         return tag_id;
