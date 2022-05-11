@@ -1,5 +1,5 @@
 
-package jcarlos.conexionbd;
+package Tareas.tarea8a;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
