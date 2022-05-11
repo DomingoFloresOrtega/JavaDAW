@@ -30,7 +30,6 @@ public class Aleatorios extends JPanel {
 
     private static Random random = new Random();
 
-    //Constructor
     public Aleatorios() {
         initComponents();
     }
