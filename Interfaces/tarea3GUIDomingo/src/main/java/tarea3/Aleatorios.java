@@ -21,6 +21,7 @@ import javax.swing.JTextArea;
  *
  * @author domingo
  */
+
 public class Aleatorios extends JPanel {
 
     private JButton botonNombre, botonApellidos, botonAleatorio;
@@ -69,8 +70,8 @@ public class Aleatorios extends JPanel {
             }
         });
 
-        botonAleatorio = new JButton("Generar numero aleatorio");
-        numero = new JLabel("Numero");
+        botonAleatorio = new JButton("Generar aleatorio");
+        numero = new JLabel("Número");
 
         this.add(botonAleatorio);
         this.add(numero);
@@ -97,7 +98,7 @@ public class Aleatorios extends JPanel {
 
             @Override
             public void mouseEntered(MouseEvent me) {
-                botonAleatorio.setBackground(Color.red);
+                botonAleatorio.setBackground(Color.white);
             }
 
             @Override

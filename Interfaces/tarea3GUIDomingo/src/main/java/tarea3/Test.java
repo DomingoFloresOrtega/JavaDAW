@@ -16,6 +16,7 @@ public class Test {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
         // Construimos la ventana
         JFrame frame = new JFrame("Domingo Flores Ortega - 1º DAW");
