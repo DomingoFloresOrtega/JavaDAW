@@ -8,9 +8,9 @@ import java.sql.SQLException;
 public class Conexion {
 
     private static final String SERVIDOR = "jdbc:mysql://localhost/";
-    private static final String NOMBRE_BASE_DATOS = "nombreBaseDatos";
-    private static final String USER = "root";
-    private static final String PASS = "1234";
+    private static final String NOMBRE_BASE_DATOS = "prog2122";
+    private static final String USER = "domingo";
+    private static final String PASS = "d0m1ng0@";
 
     private static Connection instancia = null;
     
