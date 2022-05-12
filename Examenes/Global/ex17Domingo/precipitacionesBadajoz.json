@@ -1,0 +1,116 @@
+[ {
+  "fecha" : [ 2017, 10, 31 ],
+  "estacionMeteorologica" : "Herrera del Duque",
+  "provincia" : "Badajoz",
+  "precipitacion" : 12.0
+}, {
+  "fecha" : [ 2017, 10, 30 ],
+  "estacionMeteorologica" : "Peraleda del Zaucejo",
+  "provincia" : "Badajoz",
+  "precipitacion" : 13.0
+}, {
+  "fecha" : [ 2017, 10, 2 ],
+  "estacionMeteorologica" : "Castuera",
+  "provincia" : "Badajoz",
+  "precipitacion" : 21.0
+}, {
+  "fecha" : [ 2017, 10, 1 ],
+  "estacionMeteorologica" : "Navalvillar de Pela",
+  "provincia" : "Badajoz",
+  "precipitacion" : 45.0
+}, {
+  "fecha" : [ 2017, 10, 20 ],
+  "estacionMeteorologica" : "Don Benito",
+  "provincia" : "Badajoz",
+  "precipitacion" : 1.0
+}, {
+  "fecha" : [ 2017, 10, 10 ],
+  "estacionMeteorologica" : "Llerena",
+  "provincia" : "Badajoz",
+  "precipitacion" : 2.3
+}, {
+  "fecha" : [ 2017, 10, 15 ],
+  "estacionMeteorologica" : "Villafranca de los Barros",
+  "provincia" : "Badajoz",
+  "precipitacion" : 4.5
+}, {
+  "fecha" : [ 2017, 10, 18 ],
+  "estacionMeteorologica" : "M�rida",
+  "provincia" : "Badajoz",
+  "precipitacion" : 4.5
+}, {
+  "fecha" : [ 2017, 10, 23 ],
+  "estacionMeteorologica" : "Zafra",
+  "provincia" : "Badajoz",
+  "precipitacion" : 3.2
+}, {
+  "fecha" : [ 2017, 10, 24 ],
+  "estacionMeteorologica" : "Almendralejo",
+  "provincia" : "Badajoz",
+  "precipitacion" : 7.9
+}, {
+  "fecha" : [ 2017, 10, 18 ],
+  "estacionMeteorologica" : "Badajoz Aeropuerto",
+  "provincia" : "Badajoz",
+  "precipitacion" : 5.5
+}, {
+  "fecha" : [ 2017, 10, 31 ],
+  "estacionMeteorologica" : "Alburquerque",
+  "provincia" : "Badajoz",
+  "precipitacion" : 6.1
+}, {
+  "fecha" : [ 2017, 10, 18 ],
+  "estacionMeteorologica" : "Puebla de Obando",
+  "provincia" : "Badajoz",
+  "precipitacion" : 3.3
+}, {
+  "fecha" : [ 2017, 10, 31 ],
+  "estacionMeteorologica" : "Badajoz",
+  "provincia" : "Badajoz",
+  "precipitacion" : 2.2
+}, {
+  "fecha" : [ 2017, 10, 27 ],
+  "estacionMeteorologica" : "Olivenza",
+  "provincia" : "Badajoz",
+  "precipitacion" : 7.0
+}, {
+  "fecha" : [ 2017, 10, 14 ],
+  "estacionMeteorologica" : "Alconchel",
+  "provincia" : "Badajoz",
+  "precipitacion" : 2.0
+}, {
+  "fecha" : [ 2017, 10, 12 ],
+  "estacionMeteorologica" : "Barcarrota",
+  "provincia" : "Badajoz",
+  "precipitacion" : 1.0
+}, {
+  "fecha" : [ 2017, 10, 13 ],
+  "estacionMeteorologica" : "Villanueva del Fresno",
+  "provincia" : "Badajoz",
+  "precipitacion" : 2.0
+}, {
+  "fecha" : [ 2017, 10, 29 ],
+  "estacionMeteorologica" : "Monesterio",
+  "provincia" : "Badajoz",
+  "precipitacion" : 5.0
+}, {
+  "fecha" : [ 2017, 10, 30 ],
+  "estacionMeteorologica" : "Fuente de Cantos",
+  "provincia" : "Badajoz",
+  "precipitacion" : 3.3
+}, {
+  "fecha" : [ 2017, 10, 31 ],
+  "estacionMeteorologica" : "Jerez de los Caballeros",
+  "provincia" : "Badajoz",
+  "precipitacion" : 4.4
+}, {
+  "fecha" : [ 2017, 10, 1 ],
+  "estacionMeteorologica" : "Fregenal de la Sierra",
+  "provincia" : "Badajoz",
+  "precipitacion" : 12.4
+}, {
+  "fecha" : [ 2017, 10, 4 ],
+  "estacionMeteorologica" : "Azuaga",
+  "provincia" : "Badajoz",
+  "precipitacion" : 13.3
+} ]
