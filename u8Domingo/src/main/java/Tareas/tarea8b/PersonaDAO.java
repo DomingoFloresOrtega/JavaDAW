@@ -177,7 +177,7 @@ public class PersonaDAO implements IPersona {
             return numFilas;
         }
     }
-
+    
     public int cambiarNombres(String newName, String oldName) throws SQLException {
 
         int res = 0;
@@ -196,7 +196,4 @@ public class PersonaDAO implements IPersona {
         }
         return res;
     }
-
-
 }
-
