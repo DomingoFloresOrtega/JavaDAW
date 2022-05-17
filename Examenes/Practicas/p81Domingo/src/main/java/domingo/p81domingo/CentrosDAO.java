@@ -1,6 +1,4 @@
-/*
- * Clase que implementa la interface IPersona
- */
+
 package domingo.p81domingo;
 
 import java.sql.CallableStatement;
@@ -29,15 +27,14 @@ public class CentrosDAO implements ICentros {
     public List<CentrosVO> getAll() throws SQLException {
         List<CentrosVO> lista = new ArrayList<>();
 
-        // Preparamos la consulta de datos mediante un objeto Statement
-        // ya que no necesitamos parametrizar la sentencia SQL
+        // Preparamos la consulta de datos
         try (Statement st = con.createStatement()) {
             // Ejecutamos la sentencia y obtenemos las filas
             ResultSet res = st.executeQuery("select * from centros");
             // Construimos la lista, recorriendo el ResultSet y mapeando los datos
             while (res.next()) {
                 CentrosVO c = new CentrosVO();
-                // Recogemos los datos de la persona, guardamos en un objeto
+                // Recogemos los datos del centro y lo guardamos en un objeto
                 c.setNumce(res.getInt("numce"));
                 c.setNomce(res.getString("nomce"));
                 c.setDirce(res.getString("dirce"));
@@ -62,13 +59,12 @@ public class CentrosDAO implements ICentros {
             // Preparamos la sentencia parametrizada
             prest.setInt(1, pk);
 
-            // Ejecutamos la sentencia y obtenemos las filas en el objeto ResultSet
+            // Ejecutamos la sentencia y obtenemos las filas
             res = prest.executeQuery();
 
-            // Nos posicionamos en el primer registro del Resultset. Sólo debe haber una fila
-            // si existe esa pk
+            // Nos posicionamos en el primer registro del Resultset
             if (res.next()) {
-                // Recogemos los datos de la persona, guardamos en un objeto
+                // Recogemos los datos del centro y lo guardamos en un objeto
                 c.setNumce(res.getInt("numce"));
                 c.setNomce(res.getString("nomce"));
                 c.setDirce(res.getString("dirce"));
@@ -88,12 +84,9 @@ public class CentrosDAO implements ICentros {
         String sql = "insert into centros values (?,?,?,?)";
 
         if (findByPk(centro.getNumce()) != null) {
-            // Existe un registro con esa pk
-            // No se hace la inserción
+            // Si existe un registro con esa pk no se realiza la inserción
             return numFilas;
         } else {
-            // Instanciamos el objeto PreparedStatement para inserción
-            // de datos. Sentencia parametrizada
             try (PreparedStatement prest = con.prepareStatement(sql)) {
 
                 // Establecemos los parámetros de la sentencia
@@ -127,8 +120,6 @@ public class CentrosDAO implements ICentros {
 
         int nfilas = 0;
 
-        // Preparamos el borrado de datos  mediante un Statement
-        // No hay parámetros en la sentencia SQL
         try (Statement st = con.createStatement()) {
             // Ejecución de la sentencia
             nfilas = st.executeUpdate(sql);
@@ -163,11 +154,9 @@ public class CentrosDAO implements ICentros {
         String sql = "update centros set nomce = ?, dirce = ?, codpostal = ? where numce=?";
 
         if (findByPk(pk) == null) {
-            // La persona a actualizar no existe
+            // El centro para actualizar no existe
             return numFilas;
         } else {
-            // Instanciamos el objeto PreparedStatement para inserción
-            // de datos. Sentencia parametrizada
             try (PreparedStatement prest = con.prepareStatement(sql)) {
 
                 // Establecemos los parámetros de la sentencia

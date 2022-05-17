@@ -1,6 +1,3 @@
-/*
- * Esta clase aplica el patrón SINGLETON
- */
 
 package domingo.p81domingo;
 

@@ -26,13 +26,12 @@ public interface ICentros {
     // Método para insertar varios registros
     int insertCentro (List<CentrosVO> lista) throws SQLException;
     
-    // Método para borrar una persona
+    // Método para borrar un centro
     int deleteCentro (CentrosVO p) throws SQLException;
     
     // Método para borrar toda la tabla
     int deleteCentro() throws SQLException;
     
-    // Método para modificar una persona. Se modifica a la persona que tenga esa 'pk'
-    // con los nuevos datos que traiga la persona 'nuevosDatos'
+    // Método para modificar un centro que cumple con la pk indicada
     int updateCentro (int pk, CentrosVO nuevosDatos) throws SQLException;
 }
