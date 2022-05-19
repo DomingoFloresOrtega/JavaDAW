@@ -6,6 +6,7 @@ package calculadora;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /**
  *
@@ -13,8 +14,7 @@ import javax.swing.JButton;
  */
 public class PanelBotones extends JPanel {
 
-    // Números del 0 al 9 y seis botones más para
-    // suma, resta, multiplicacion, división, resultado y limpiar
+    // Botones para la calculadora
     JButton[] grupoBotones = new JButton[16];
 
     public PanelBotones() {
@@ -34,7 +34,7 @@ public class PanelBotones extends JPanel {
         grupoBotones[14] = new JButton("=");
         grupoBotones[15] = new JButton("C");
 
-// Establecemos el layout
+        // Establecemos el layout
         this.setLayout(new GridLayout(4, 4));
 
         for (JButton boton : grupoBotones) {

@@ -6,13 +6,16 @@ package calculadora;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 /**
  *
  * @author domingo
  */
-public class PanelPrincipal {
+public class PanelPrincipal extends JPanel {
 
     // Atributos de la clase (privados)
     private PanelBotones botonera;
@@ -34,11 +37,27 @@ public class PanelPrincipal {
         areaTexto.setEditable(false);
         areaTexto.setBackground(Color.white);
 
-        //Establecemos layout del panel principal
+        // Establecemos layout del panel principal
         this.setLayout(new BorderLayout());
         // Colocamos la botonera y el área texto
         this.add(areaTexto, BorderLayout.NORTH);
         this.add(botonera, BorderLayout.SOUTH);
+        
+        for (JButton boton: this.botonera.getgrupoBotones()){
+            boton.addActionListener(this);
+        }
+
+        
+  @Override
+    public void actionPerformed(ActionEvent ae) {
+	// Se obtiene el objeto que desencadena el evento
+        Object o = ae.getSource();
+	// Si es un botón
+        if (o instanceof JButton){
+            System.out.println(((JButton) o).getText());
+            areaTexto.setText(((JButton) o).getText());
+        }
+    }
 
     }
 }
