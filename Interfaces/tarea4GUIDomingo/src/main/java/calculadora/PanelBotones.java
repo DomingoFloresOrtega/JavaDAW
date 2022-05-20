@@ -6,6 +6,7 @@ package calculadora;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -13,8 +14,7 @@ import javax.swing.JPanel;
  * @author domingo
  */
 public class PanelBotones extends JPanel {
-
-    // Botones para la calculadora
+    
     JButton[] grupoBotones = new JButton[16];
 
     public PanelBotones() {
