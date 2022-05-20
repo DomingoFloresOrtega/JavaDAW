@@ -82,6 +82,7 @@ public class PanelPrincipal extends JPanel implements ActionListener {
             JButton campo = (JButton) o;
             System.out.println(campo.getText());
             
+            // Comprobamos si existen excepciones
             if (!controlExcepcion(campo.getText(), texto)) {
                 texto.setText(texto.getText() + campo.getText());
             } else {
@@ -113,7 +114,6 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                         operador = "/";
                         encontrado = false;
                         break;
-
                 }
                 
                 if (encontrado) {
@@ -147,6 +147,7 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                 igual = texto.getText().substring(numeroB.length(), texto.getText().length());
                 System.out.println(texto.getText());
 
+                // Seleccionar operador segun se pulse
                 switch (operador) {
                     case "+":
                         resultado = numeroAInt + numeroBInt;
@@ -171,6 +172,7 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                 }
             }
 
+            // Seleccionar texto segun se seleccione
             switch (campo.getText()) {
                 case "0":
                     texto.setText(texto.getText());
