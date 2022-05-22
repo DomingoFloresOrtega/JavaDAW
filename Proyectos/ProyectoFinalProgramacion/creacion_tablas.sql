@@ -1,3 +1,4 @@
+drop database if exists prog2122;
 create database prog2122;
 use prog2122;
 
@@ -11,7 +12,7 @@ start transaction;
     direccion varchar(100),
     email varchar(100),
     tel char(12) unique,
-    constraint pk_tutor primary key (codTutor));
+    constraint pk_tutores primary key (codTutor));
         
 	create table if not exists alumnado
 	(codAlumnado int unsigned,
@@ -30,11 +31,7 @@ start transaction;
     
     create table if not exists unidades
     (codUnidad int unsigned,
-    codTutor int unsigned,
     numMaxAlum char(4),
     tutoria varchar(50),
-    constraint pk_unidades primary key (codUnidad),
-    constraint fk_unidades_tutores foreign key (codTutor)
-		references tutores(codTutor));
+    constraint pk_unidades primary key (codUnidad));
 commit;
-    
