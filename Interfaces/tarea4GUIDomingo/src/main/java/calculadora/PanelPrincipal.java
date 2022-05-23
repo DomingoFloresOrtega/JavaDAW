@@ -19,7 +19,7 @@ import javax.swing.JTextArea;
  */
 public class PanelPrincipal extends JPanel implements ActionListener {
 
-    // Atributos de la clase (privados)
+    // Atributos de la clase
     private PanelBotones botonera;
     private JTextArea texto;
     private int tipoOperacion;
@@ -39,7 +39,7 @@ public class PanelPrincipal extends JPanel implements ActionListener {
         texto.setEditable(false);
         texto.setBackground(Color.white);
 
-        //Establecemos layout del panel principal
+        // Establecemos layout del panel principal
         this.setLayout(new BorderLayout());
         // Colocamos la botonera y el área texto
         this.add(texto, BorderLayout.NORTH);
