@@ -13,7 +13,7 @@ import entidades.Alumnado;
 public class ControladorAlumnado {
 		
 		// Factoria para obtener objetos EntityManager
-		private static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("rentacar");
+		private static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("prog2122");
 		private EntityManager em;
 		private Query consulta;
 		
@@ -69,9 +69,9 @@ public class ControladorAlumnado {
 			this.em = entityManagerFactory.createEntityManager();
 			Alumnado aux = null;
 			// Se crea el objeto Query a partir de una SQL nativa
-			this.consulta = em.createNativeQuery ("Select * from alumnado where codAlumnado = ?", Alumnado.class);
-			this.consulta.setParameter(1, pk);
-			aux = (Alumnado) consulta.getSingleResult();
+			this.consulta = (Query) em.createNativeQuery ("Select * from alumnado where codAlumnado = ?", Alumnado.class);
+			((javax.persistence.Query) this.consulta).setParameter(1, pk);
+			aux = (Alumnado) ((javax.persistence.Query) consulta).getSingleResult();
 			this.em.close();
 			return aux;
 
@@ -79,17 +79,17 @@ public class ControladorAlumnado {
 
 		public Alumnado findByNombre(String nombre) {
 			this.em = entityManagerFactory.createEntityManager();
-			this.consulta = em.createNamedQuery("Alumnado.findNombre");
-			this.consulta.setParameter("Nombre", nombre);
-			Alumnado a = (Alumnado) consulta.getSingleResult();
+			this.consulta = (Query) em.createNamedQuery("Alumnado.findNombre");
+			((javax.persistence.Query) this.consulta).setParameter("Nombre", nombre);
+			Alumnado a = (Alumnado) ((javax.persistence.Query) consulta).getSingleResult();
 			this.em.close();
 			return a;
 		}
 
 		public List<Alumnado> findAll() {
 			this.em = entityManagerFactory.createEntityManager();
-			this.consulta = em.createNamedQuery("Vehiculo.findAll");
-			List<Alumnado> listaVehiculos = (List<Alumnado>) consulta.getResultList();
+			this.consulta = (Query) em.createNamedQuery("Alumnado.findAll");
+			List<Alumnado> listaVehiculos = (List<Alumnado>) ((javax.persistence.Query) consulta).getResultList();
 			this.em.close();
 			return listaVehiculos;
 		}

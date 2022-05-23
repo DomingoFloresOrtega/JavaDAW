@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 
 import com.mysql.cj.Query;
 
-import entidades.Tutores;
+import entidades.Tutore;
 
 public class ControladorTutores {
 		
@@ -17,9 +17,9 @@ public class ControladorTutores {
 		private EntityManager em;
 		private Query consulta;
 		
-		public void borrarTutor(Tutores a) {
+		public void borrarTutor(Tutore a) {
 			this.em = entityManagerFactory.createEntityManager();
-			Tutores aux = null;
+			Tutore aux = null;
 			this.em.getTransaction().begin();
 			// Si a no es un objeto gestionado por el contexto de persistencia
 			if (!this.em.contains(a)) {
@@ -35,7 +35,7 @@ public class ControladorTutores {
 			this.em.close();
 		}
 
-		public void modificarTutor(Tutores a) {
+		public void modificarTutor(Tutore a) {
 			this.em = entityManagerFactory.createEntityManager();
 			// En este caso es necesario iniciar una transacción en la base de datos
 			// porque vamos a persistir información en la misma
@@ -51,7 +51,7 @@ public class ControladorTutores {
 
 		}
 
-		public void crearTutor(Tutores a) {
+		public void crearTutor(Tutore a) {
 			this.em = entityManagerFactory.createEntityManager();
 			// En este caso es necesario iniciar una transacción en la base de datos
 			// porque vamos a persistir información en la misma
@@ -65,31 +65,31 @@ public class ControladorTutores {
 			this.em.close();
 		}
 
-		public Tutores findByPK(int pk) {
+		public Tutore findByPK(int pk) {
 			this.em = entityManagerFactory.createEntityManager();
-			Tutores aux = null;
+			Tutore aux = null;
 			// Se crea el objeto Query a partir de una SQL nativa
-			this.consulta = em.createNativeQuery ("Select * from alumnado where codTutores = ?", Tutores.class);
-			this.consulta.setParameter(1, pk);
-			aux = (Tutores) consulta.getSingleResult();
+			this.consulta = (Query) em.createNativeQuery ("Select * from tutores where codTutor = ?", Tutore.class);
+			((javax.persistence.Query) this.consulta).setParameter(1, pk);
+			aux = (Tutore) ((javax.persistence.Query) consulta).getSingleResult();
 			this.em.close();
 			return aux;
 
 		}
 
-		public Tutores findByNombre(String nombre) {
+		public Tutore findByNombre(String nombre) {
 			this.em = entityManagerFactory.createEntityManager();
-			this.consulta = em.createNamedQuery("Tutores.findNombre");
-			this.consulta.setParameter("Nombre", nombre);
-			Tutores a = (Tutores) consulta.getSingleResult();
+			this.consulta = (Query) em.createNamedQuery("Tutores.findNombre");
+			((javax.persistence.Query) this.consulta).setParameter("Nombre", nombre);
+			Tutore a = (Tutore) ((javax.persistence.Query) consulta).getSingleResult();
 			this.em.close();
 			return a;
 		}
 
-		public List<Tutores> findAll() {
+		public List<Tutore> findAll() {
 			this.em = entityManagerFactory.createEntityManager();
-			this.consulta = em.createNamedQuery("Vehiculo.findAll");
-			List<Tutores> listaVehiculos = (List<Tutores>) consulta.getResultList();
+			this.consulta = (Query) em.createNamedQuery("Tutore.findAll");
+			List<Tutore> listaVehiculos = (List<Tutore>) ((javax.persistence.Query) consulta).getResultList();
 			this.em.close();
 			return listaVehiculos;
 		}
