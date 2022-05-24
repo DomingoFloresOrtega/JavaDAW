@@ -7,9 +7,9 @@
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://192.168.56.3:3306/prog2122?serverTimezone=Europe/Madrid" />
+				value="jdbc:mysql://192.168.56.1:3306/prog2122?serverTimezone=Europe/Madrid" />
 			<property name="javax.persistence.jdbc.user" 
-				value="domingo" />
+				value="proyecto2" />
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.cj.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.password"
