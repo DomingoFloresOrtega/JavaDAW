@@ -72,7 +72,7 @@ public class MetodosSQL {
         ac.borrarAlumno(a1);
     }
 	
-/***************** ALUMNADO **************/
+/***************** TUTORES **************/
 	
 	public static void obtenerTutor(){
     	ControladorTutores tc = new ControladorTutores();

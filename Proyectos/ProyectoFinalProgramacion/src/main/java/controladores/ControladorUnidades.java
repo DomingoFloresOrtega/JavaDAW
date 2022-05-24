@@ -16,7 +16,7 @@ public class ControladorUnidades {
 			private EntityManager em;
 			private Query consulta;
 			
-			public void borrarAlumno(Unidade a) {
+			public void borrarUnidad(Unidade a) {
 				this.em = entityManagerFactory.createEntityManager();
 				Unidade aux = null;
 				this.em.getTransaction().begin();
@@ -34,7 +34,7 @@ public class ControladorUnidades {
 				this.em.close();
 			}
 
-			public void modificarAlumno(Unidade a) {
+			public void modificarUnidad(Unidade a) {
 				this.em = entityManagerFactory.createEntityManager();
 				// En este caso es necesario iniciar una transacción en la base de datos
 				// porque vamos a persistir información en la misma
@@ -50,7 +50,7 @@ public class ControladorUnidades {
 
 			}
 
-			public void crearAlumno(Unidade a) {
+			public void crearUnidad(Unidade a) {
 				this.em = entityManagerFactory.createEntityManager();
 				// En este caso es necesario iniciar una transacción en la base de datos
 				// porque vamos a persistir información en la misma
@@ -76,10 +76,10 @@ public class ControladorUnidades {
 
 			}
 
-			public Unidade findByNombre(String nombre) {
+			public Unidade findByUnidad(String unidad) {
 				this.em = entityManagerFactory.createEntityManager();
 				this.consulta = (Query) em.createNamedQuery("Alumnado.findNombre");
-				((javax.persistence.Query) this.consulta).setParameter("Nombre", nombre);
+				((javax.persistence.Query) this.consulta).setParameter("Nombre", unidad);
 				Unidade a = (Unidade) ((javax.persistence.Query) consulta).getSingleResult();
 				this.em.close();
 				return a;
