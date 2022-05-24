@@ -148,4 +148,11 @@ public class Tutore implements Serializable {
 		this.unidade = unidade;
 	}
 
+	@Override
+	public String toString() {
+		return "Tutore [codTutor=" + codTutor + ", ape1Tutor=" + ape1Tutor + ", ape2Tutor=" + ape2Tutor + ", codUnidad="
+				+ codUnidad + ", direccion=" + direccion + ", email=" + email + ", nomTutor=" + nomTutor + ", tel="
+				+ tel + ", unidades_codUnidad=" + unidades_codUnidad + ", alumnados=" + alumnados + ", unidade="
+				+ unidade + "]";
+	}
 }

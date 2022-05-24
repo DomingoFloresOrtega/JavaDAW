@@ -121,4 +121,11 @@ public class Alumnado implements Serializable {
 		this.tutore = tutore;
 	}
 
+	@Override
+	public String toString() {
+		return "Alumnado [codAlumnado=" + codAlumnado + ", alergias=" + alergias + ", ape1Alumnado=" + ape1Alumnado
+				+ ", ape2Alumnado=" + ape2Alumnado + ", codpostal=" + codpostal + ", desAlergias=" + desAlergias
+				+ ", direccion=" + direccion + ", nombreAlumnado=" + nombreAlumnado + ", provincia=" + provincia
+				+ ", tutore=" + tutore + "]";
+	}
 }

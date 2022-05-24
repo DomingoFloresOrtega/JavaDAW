@@ -60,4 +60,9 @@ public class Unidade implements Serializable {
 		this.tutore = tutore;
 	}
 
+	@Override
+	public String toString() {
+		return "Unidade [codUnidad=" + codUnidad + ", numMaxAlum=" + numMaxAlum + ", tutoria=" + tutoria + ", tutore="
+				+ tutore + "]";
+	}
 }
