@@ -38,6 +38,7 @@ public class MetodosSQL {
         a1.setCodpostal(String.valueOf(JOptionPane.showInputDialog("Inserte el codigo postal del alumno")));
         a1.setAlergias(Byte.parseByte(JOptionPane.showInputDialog("Inserte 0 si el alumno tiene alergias. En caso contrario inserte 1")));
         a1.setDesAlergias(String.valueOf(JOptionPane.showInputDialog("En caso de presentar alergias, especifiquelo")));
+        System.out.println(a1);
         ac.crearAlumno(a1);
     }
 	
@@ -81,7 +82,7 @@ public class MetodosSQL {
 	public static void matricularTutor(){
 		ControladorTutores tc = new ControladorTutores();
         Tutore t1 = new Tutore();
-        
+       
     }
 	
 	public static void actualizarTutor(){
