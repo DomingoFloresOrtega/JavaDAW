@@ -89,8 +89,8 @@ public class ControladorAlumnado {
 		public List<Alumnado> findAll() {
 			this.em = entityManagerFactory.createEntityManager();
 			this.consulta = (Query) em.createNamedQuery("Alumnado.findAll");
-			List<Alumnado> listaVehiculos = (List<Alumnado>) ((javax.persistence.Query) consulta).getResultList();
+			List<Alumnado> listaAlumnado = (List<Alumnado>) ((javax.persistence.Query) consulta).getResultList();
 			this.em.close();
-			return listaVehiculos;
+			return listaAlumnado;
 		}
 }
