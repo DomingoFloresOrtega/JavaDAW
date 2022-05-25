@@ -5,8 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
-import com.mysql.cj.Query;
+import javax.persistence.Query;
 
 import entidades.Tutore;
 
@@ -69,9 +68,9 @@ public class ControladorTutores {
 			this.em = entityManagerFactory.createEntityManager();
 			Tutore aux = null;
 			// Se crea el objeto Query a partir de una SQL nativa
-			this.consulta = (Query) em.createNativeQuery ("Select * from tutores where codTutor = ?", Tutore.class);
-			((javax.persistence.Query) this.consulta).setParameter(1, pk);
-			aux = (Tutore) ((javax.persistence.Query) consulta).getSingleResult();
+			this.consulta = em.createNativeQuery ("Select * from tutores where codTutor = ?", Tutore.class);
+			this.consulta.setParameter(1, pk);
+			aux = (Tutore) consulta.getSingleResult();
 			this.em.close();
 			return aux;
 
@@ -79,17 +78,17 @@ public class ControladorTutores {
 
 		public Tutore findByNombre(String nombre) {
 			this.em = entityManagerFactory.createEntityManager();
-			this.consulta = (Query) em.createNamedQuery("Tutores.findNombre");
-			((javax.persistence.Query) this.consulta).setParameter("Nombre", nombre);
-			Tutore a = (Tutore) ((javax.persistence.Query) consulta).getSingleResult();
+			this.consulta = em.createNamedQuery("Tutores.findNombre");
+			this.consulta.setParameter("Nombre", nombre);
+			Tutore a = (Tutore) consulta.getSingleResult();
 			this.em.close();
 			return a;
 		}
 
 		public List<Tutore> findAll() {
 			this.em = entityManagerFactory.createEntityManager();
-			this.consulta = (Query) em.createNamedQuery("Tutore.findAll");
-			List<Tutore> listaTutores = (List<Tutore>) ((javax.persistence.Query) consulta).getResultList();
+			this.consulta = em.createNamedQuery("Tutore.findAll");
+			List<Tutore> listaTutores = (List<Tutore>) consulta.getResultList();
 			this.em.close();
 			return listaTutores;
 		}

@@ -5,8 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
-import com.mysql.cj.Query;
+import javax.persistence.Query;
 
 import entidades.Unidade;
 
@@ -68,9 +67,9 @@ public class ControladorUnidades {
 				this.em = entityManagerFactory.createEntityManager();
 				Unidade aux = null;
 				// Se crea el objeto Query a partir de una SQL nativa
-				this.consulta = (Query) em.createNativeQuery ("Select * from unidades where codUnidad = ?", Unidade.class);
-				((javax.persistence.Query) this.consulta).setParameter(1, pk);
-				aux = (Unidade) ((javax.persistence.Query) consulta).getSingleResult();
+				this.consulta = em.createNativeQuery ("Select * from unidades where codUnidad = ?", Unidade.class);
+				this.consulta.setParameter(1, pk);
+				aux = (Unidade) consulta.getSingleResult();
 				this.em.close();
 				return aux;
 
@@ -78,17 +77,17 @@ public class ControladorUnidades {
 
 			public Unidade findByUnidad(String unidad) {
 				this.em = entityManagerFactory.createEntityManager();
-				this.consulta = (Query) em.createNamedQuery("Alumnado.findNombre");
-				((javax.persistence.Query) this.consulta).setParameter("Nombre", unidad);
-				Unidade a = (Unidade) ((javax.persistence.Query) consulta).getSingleResult();
+				this.consulta = em.createNamedQuery("Alumnado.findNombre");
+				this.consulta.setParameter("Nombre", unidad);
+				Unidade a = (Unidade) consulta.getSingleResult();
 				this.em.close();
 				return a;
 			}
 
 			public List<Unidade> findAll() {
 				this.em = entityManagerFactory.createEntityManager();
-				this.consulta = (Query) em.createNamedQuery("Alumnado.findAll");
-				List<Unidade> listaUnidades = (List<Unidade>) ((javax.persistence.Query) consulta).getResultList();
+				this.consulta = em.createNamedQuery("Alumnado.findAll");
+				List<Unidade> listaUnidades = (List<Unidade>) consulta.getResultList();
 				this.em.close();
 				return listaUnidades;
 			}

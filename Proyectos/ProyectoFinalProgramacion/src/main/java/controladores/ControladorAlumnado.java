@@ -5,8 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
-import com.mysql.cj.Query;
+import javax.persistence.Query;
 
 import entidades.Alumnado;
 
@@ -21,9 +20,9 @@ public class ControladorAlumnado {
 			this.em = entityManagerFactory.createEntityManager();
 			Alumnado aux = null;
 			// Se crea el objeto Query a partir de una SQL nativa
-			this.consulta = (Query) em.createNativeQuery ("Delete from alumnado where codAlumnado = ?", Alumnado.class);
-			((javax.persistence.Query) this.consulta).setParameter(1, id);
-			aux = (Alumnado) ((javax.persistence.Query) consulta).getSingleResult();
+			this.consulta = em.createNativeQuery ("Delete from alumnado where codAlumnado = ?", Alumnado.class);
+			this.consulta.setParameter(1, id);
+			aux = (Alumnado) consulta.getSingleResult();
 			this.em.close();
 		}
 
@@ -61,27 +60,26 @@ public class ControladorAlumnado {
 			this.em = entityManagerFactory.createEntityManager();
 			Alumnado aux = null;
 			// Se crea el objeto Query a partir de una SQL nativa
-			this.consulta = (Query) em.createNativeQuery ("Select * from alumnado where codAlumnado = ?", Alumnado.class);
-			((javax.persistence.Query) this.consulta).setParameter(1, id);
-			aux = (Alumnado) ((javax.persistence.Query) consulta).getSingleResult();
+			this.consulta = em.createNativeQuery ("Select * from alumnado where codAlumnado = ?", Alumnado.class);
+			this.consulta.setParameter(1, id);
+			aux = (Alumnado) consulta.getSingleResult();
 			this.em.close();
 			return aux;
-
 		}
 
 		public Alumnado findByNombre(String nombre) {
 			this.em = entityManagerFactory.createEntityManager();
-			this.consulta = (Query) em.createNamedQuery("Alumnado.findNombre");
-			((javax.persistence.Query) this.consulta).setParameter("Nombre", nombre);
-			Alumnado a = (Alumnado) ((javax.persistence.Query) consulta).getSingleResult();
+			this.consulta = em.createNamedQuery("Alumnado.findNombre");
+			this.consulta.setParameter("Nombre", nombre);
+			Alumnado a = (Alumnado) consulta.getSingleResult();
 			this.em.close();
 			return a;
 		}
 
 		public List<Alumnado> findAll() {
 			this.em = entityManagerFactory.createEntityManager();
-			this.consulta = (Query) em.createNamedQuery("Alumnado.findAll");
-			List<Alumnado> listaAlumnado = (List<Alumnado>) ((javax.persistence.Query) consulta).getResultList();
+			this.consulta = em.createNamedQuery("Alumnado.findAll");
+			List<Alumnado> listaAlumnado = (List<Alumnado>) consulta.getResultList();
 			this.em.close();
 			return listaAlumnado;
 		}
