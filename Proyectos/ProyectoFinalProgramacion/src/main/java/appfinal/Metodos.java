@@ -45,7 +45,7 @@ public class Metodos {
         
         switch (variable) {
         	case 3:
-        		MetodosSQL.obtenerAlumnos();
+        		MetodosSQL.obtenerTutor();
         		break;
         	case 2:
                 MetodosSQL.matricularTutor();
@@ -54,7 +54,7 @@ public class Metodos {
                 MetodosSQL.actualizarTutor();
                 break;
             case 0:
-                Metodos.opcionUnidades();
+                MetodosSQL.eliminarTutor();
                 break;
         };
     }
@@ -67,14 +67,17 @@ public class Metodos {
                 ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconUnidad, botones, botones[0]);
         
         switch (variable) {
-            case 2:
+	        case 3:
+	    		MetodosSQL.obtenerUnidad();
+	    		break;
+        	case 2:
                 MetodosSQL.crearUnidad();
                 break;
             case 1:
                 MetodosSQL.modificarUnidad();
                 break;
             case 0:
-                Metodos.opcionUnidades();
+                MetodosSQL.eliminarUnidad();
                 break;
         };
     }

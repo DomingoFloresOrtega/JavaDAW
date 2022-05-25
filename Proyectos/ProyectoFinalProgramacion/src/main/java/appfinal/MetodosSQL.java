@@ -9,6 +9,8 @@ import entidades.Alumnado;
 import entidades.Tutore;
 import entidades.Unidade;
 
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import controladores.ControladorAlumnado;
@@ -25,8 +27,12 @@ public class MetodosSQL {
 	
 	public static void obtenerAlumnos(){
     	ControladorAlumnado ac = new ControladorAlumnado();
-        System.out.println(ac.findAll());
-    }
+    	List<Alumnado> listaAlumnos = ac.findAll();
+    	
+    	for (Alumnado a : listaAlumnos) {
+			System.out.println(a);
+		}
+	}
 	
 	public static void matricularAlumno(){
     	ControladorAlumnado ac = new ControladorAlumnado();
@@ -67,8 +73,12 @@ public class MetodosSQL {
 /***************** TUTORES **************/
 	
 	public static void obtenerTutor(){
-    	ControladorTutores tc = new ControladorTutores();
-        Tutore t1 = new Tutore();
+		ControladorTutores tc = new ControladorTutores();
+    	List<Tutore> listaTutores = tc.findAll();
+    	
+    	for (Tutore t : listaTutores) {
+			System.out.println(t);
+		}
     }
 	
 	public static void matricularTutor(){
@@ -106,8 +116,12 @@ public class MetodosSQL {
 /***************** UNIDADES **************/
 	
 	public static void obtenerUnidad(){
-    	ControladorTutores tc = new ControladorTutores();
-        Tutore t1 = new Tutore();
+		ControladorUnidades uc = new ControladorUnidades();
+    	List<Unidade> listaUnidades = uc.findAll();
+    	
+    	for (Unidade u : listaUnidades) {
+			System.out.println(u);
+		}
     }
 	
 	public static void crearUnidad(){
