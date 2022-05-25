@@ -22,7 +22,8 @@ public class Unidade implements Serializable {
 	private String tutoria;
 
 	//bi-directional one-to-one association to Tutore
-	@OneToOne(mappedBy="unidade", fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.LAZY)
+	@PrimaryKeyJoinColumn(name="tutores_codTutor")
 	private Tutore tutore;
 
 	public Unidade() {
@@ -65,4 +66,5 @@ public class Unidade implements Serializable {
 		return "Unidade [codUnidad=" + codUnidad + ", numMaxAlum=" + numMaxAlum + ", tutoria=" + tutoria + ", tutore="
 				+ tutore + "]";
 	}
+
 }

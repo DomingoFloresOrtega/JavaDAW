@@ -35,7 +35,7 @@ public class Alumnado implements Serializable {
 
 	//bi-directional many-to-one association to Tutore
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="codTutor")
+	@PrimaryKeyJoinColumn(name="codTutor")
 	private Tutore tutore;
 
 	public Alumnado() {
@@ -128,4 +128,5 @@ public class Alumnado implements Serializable {
 				+ ", direccion=" + direccion + ", nombreAlumnado=" + nombreAlumnado + ", provincia=" + provincia
 				+ ", tutore=" + tutore + "]";
 	}
+
 }

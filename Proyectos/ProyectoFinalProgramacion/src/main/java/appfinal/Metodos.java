@@ -21,31 +21,37 @@ public class Metodos {
                 ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconAlumno, botones, botones[0]);
         
         switch (variable) {
-            case 2:
+	        case 3:
+	    		MetodosSQL.obtenerAlumnos();
+	    		break;
+        	case 2:
                 MetodosSQL.matricularAlumno();
                 break;
             case 1:
-                Metodos.opcionTutores();
+                MetodosSQL.actualizarAlumno();
                 break;
             case 0:
-                Metodos.opcionUnidades();
+                MetodosSQL.eliminarAlumno();
                 break;
         };
     }
     
     public static void opcionTutores(){
         ImageIcon iconTutor = new ImageIcon("Imagenes/tutor.png");
-        String [] botones = { "Dar de baja", "Modificar", "Asignar tutoria", "Listado" };
+        String [] botones = { "Dar de baja", "Modificar", "Dar de alta", "Listado" };
         
         int variable = JOptionPane.showOptionDialog (null, "Bienvenido al area de tutoria \n ¿Qué desea hacer hoy?", 
                 ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconTutor, botones, botones[0]);
         
         switch (variable) {
-            case 2:
-                MetodosSQL.matricularAlumno();
+        	case 3:
+        		MetodosSQL.obtenerAlumnos();
+        		break;
+        	case 2:
+                MetodosSQL.matricularTutor();
                 break;
             case 1:
-                Metodos.opcionTutores();
+                MetodosSQL.actualizarTutor();
                 break;
             case 0:
                 Metodos.opcionUnidades();
@@ -62,10 +68,10 @@ public class Metodos {
         
         switch (variable) {
             case 2:
-                MetodosSQL.matricularAlumno();
+                MetodosSQL.crearUnidad();
                 break;
             case 1:
-                Metodos.opcionTutores();
+                MetodosSQL.modificarUnidad();
                 break;
             case 0:
                 Metodos.opcionUnidades();

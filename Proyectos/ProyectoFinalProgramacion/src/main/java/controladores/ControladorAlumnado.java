@@ -17,21 +17,13 @@ public class ControladorAlumnado {
 		private EntityManager em;
 		private Query consulta;
 		
-		public void borrarAlumno(Alumnado a) {
+		public void borrarAlumno(int id) {
 			this.em = entityManagerFactory.createEntityManager();
 			Alumnado aux = null;
-			this.em.getTransaction().begin();
-			// Si a no es un objeto gestionado por el contexto de persistencia
-			if (!this.em.contains(a)) {
-				// Carga a en el contexto de persistencia y se guarda en aux
-				aux = this.em.merge(a);
-			}
-			// Ahora se puede borrar usando aux, porque es una entidad gestionada por la
-			// caché
-			this.em.remove(aux);
-			// Se vuelca la información del contexto (caché intermedia) en la base de datos
-			this.em.getTransaction().commit();
-			// Cierra el entityManager
+			// Se crea el objeto Query a partir de una SQL nativa
+			this.consulta = (Query) em.createNativeQuery ("Delete from alumnado where codAlumnado = ?", Alumnado.class);
+			((javax.persistence.Query) this.consulta).setParameter(1, id);
+			aux = (Alumnado) ((javax.persistence.Query) consulta).getSingleResult();
 			this.em.close();
 		}
 
@@ -65,12 +57,12 @@ public class ControladorAlumnado {
 			this.em.close();
 		}
 
-		public Alumnado findByPK(int pk) {
+		public Alumnado findById(int id) {
 			this.em = entityManagerFactory.createEntityManager();
 			Alumnado aux = null;
 			// Se crea el objeto Query a partir de una SQL nativa
 			this.consulta = (Query) em.createNativeQuery ("Select * from alumnado where codAlumnado = ?", Alumnado.class);
-			((javax.persistence.Query) this.consulta).setParameter(1, pk);
+			((javax.persistence.Query) this.consulta).setParameter(1, id);
 			aux = (Alumnado) ((javax.persistence.Query) consulta).getSingleResult();
 			this.em.close();
 			return aux;

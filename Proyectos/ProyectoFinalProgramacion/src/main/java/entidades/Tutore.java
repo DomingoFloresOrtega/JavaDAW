@@ -22,8 +22,6 @@ public class Tutore implements Serializable {
 
 	private String ape2Tutor;
 
-	private int codUnidad;
-
 	private String direccion;
 
 	private String email;
@@ -32,15 +30,12 @@ public class Tutore implements Serializable {
 
 	private String tel;
 
-	private int unidades_codUnidad;
-
 	//bi-directional many-to-one association to Alumnado
 	@OneToMany(mappedBy="tutore")
 	private List<Alumnado> alumnados;
 
 	//bi-directional one-to-one association to Unidade
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="codTutor", referencedColumnName="codTutor")
+	@OneToOne(mappedBy="tutore", fetch=FetchType.LAZY)
 	private Unidade unidade;
 
 	public Tutore() {
@@ -68,14 +63,6 @@ public class Tutore implements Serializable {
 
 	public void setApe2Tutor(String ape2Tutor) {
 		this.ape2Tutor = ape2Tutor;
-	}
-
-	public int getCodUnidad() {
-		return this.codUnidad;
-	}
-
-	public void setCodUnidad(int codUnidad) {
-		this.codUnidad = codUnidad;
 	}
 
 	public String getDireccion() {
@@ -110,14 +97,6 @@ public class Tutore implements Serializable {
 		this.tel = tel;
 	}
 
-	public int getUnidades_codUnidad() {
-		return this.unidades_codUnidad;
-	}
-
-	public void setUnidades_codUnidad(int unidades_codUnidad) {
-		this.unidades_codUnidad = unidades_codUnidad;
-	}
-
 	public List<Alumnado> getAlumnados() {
 		return this.alumnados;
 	}
@@ -150,9 +129,9 @@ public class Tutore implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Tutore [codTutor=" + codTutor + ", ape1Tutor=" + ape1Tutor + ", ape2Tutor=" + ape2Tutor + ", codUnidad="
-				+ codUnidad + ", direccion=" + direccion + ", email=" + email + ", nomTutor=" + nomTutor + ", tel="
-				+ tel + ", unidades_codUnidad=" + unidades_codUnidad + ", alumnados=" + alumnados + ", unidade="
-				+ unidade + "]";
+		return "Tutore [codTutor=" + codTutor + ", ape1Tutor=" + ape1Tutor + ", ape2Tutor=" + ape2Tutor + ", direccion="
+				+ direccion + ", email=" + email + ", nomTutor=" + nomTutor + ", tel=" + tel + ", alumnados="
+				+ alumnados + ", unidade=" + unidade + "]";
 	}
+
 }
