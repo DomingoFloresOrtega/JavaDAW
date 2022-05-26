@@ -86,7 +86,7 @@ public class ControladorUnidades {
 
 			public List<Unidade> findAll() {
 				this.em = entityManagerFactory.createEntityManager();
-				this.consulta = em.createNamedQuery("Alumnado.findAll");
+				this.consulta = em.createNamedQuery("Unidade.findAll");
 				List<Unidade> listaUnidades = (List<Unidade>) consulta.getResultList();
 				this.em.close();
 				return listaUnidades;

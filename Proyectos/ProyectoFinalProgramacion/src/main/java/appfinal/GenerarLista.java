@@ -112,6 +112,7 @@ public class GenerarLista {
         
         try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
         	flujo.write("ID;" + "Unidad;" + "NumeroMax;");
+        	flujo.newLine();
         	for (Unidade u : listado) {
 				flujo.write(u.getCodUnidad() + ";"
 						+ u.getTutoria() + ";"

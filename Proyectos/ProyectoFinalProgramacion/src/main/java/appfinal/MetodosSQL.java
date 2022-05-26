@@ -68,6 +68,7 @@ public class MetodosSQL {
 	        Alumnado a1 = new Alumnado();
 	        int alergia = 0;
 	        int comprobarCodigo = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del usuario a modificar"));
+	        // Comprueba que existe el alumno y en caso que exista procede a actualizarlo
 	        if (ac.findById(comprobarCodigo).getNombreAlumnado() != null){
 	        	a1.setCodAlumnado(comprobarCodigo);
 	        	JOptionPane.showMessageDialog(null, "A continuación se procedera a actualizar al usuario seleccionado. \n Indique bien los valores del usuario");
@@ -99,6 +100,7 @@ public class MetodosSQL {
 		try {
 			ControladorAlumnado ac = new ControladorAlumnado();
 			int comprobarCodigo = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID de la unidad a modificar"));
+			// Comprueba que existe el alumno y en caso que exista procede a eliminarlo
 			if (ac.findById(comprobarCodigo).getNombreAlumnado() != null) {
 		        ac.borrarAlumno(comprobarCodigo);
 			}
@@ -143,6 +145,7 @@ public class MetodosSQL {
 	    	ControladorUnidades uc = new ControladorUnidades();
 	        Tutore t1 = new Tutore();
 	        int comprobarCodigo = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del usuario a modificar"));
+	        // Comprueba que existe el tutor y en caso que exista procede a actualizarlo
 	        if (tc.findByPK(comprobarCodigo).getNomTutor() != null) {
 		        t1.setNomTutor(String.valueOf(JOptionPane.showInputDialog("Inserte el nombre del tutor")));
 		        t1.setApe1Tutor(String.valueOf(JOptionPane.showInputDialog("Inserte el primer apellido del tutor")));
@@ -164,6 +167,7 @@ public class MetodosSQL {
 		try {
 			ControladorTutores tc = new ControladorTutores();
 			int comprobarCodigo = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID de la unidad a modificar"));
+			// Comprueba que existe el tutor y en caso que exista procede a eliminarlo
 			if (tc.findByPK(comprobarCodigo).getNomTutor() != null) {
 		        tc.borrarTutor(tc.findByPK(comprobarCodigo));
 			}
@@ -178,7 +182,7 @@ public class MetodosSQL {
 		try {
 			Metodos.opcionUnidadesListado();
 		} catch (NoResultException nre) {
-			JOptionPane.showMessageDialog(null, "El tutor no existe");
+			JOptionPane.showMessageDialog(null, "La unidad no existe");
 		};
     }
 	
@@ -203,6 +207,7 @@ public class MetodosSQL {
 			ControladorTutores tc = new ControladorTutores();
 	        Unidade u1 = new Unidade();
 	        int comprobarCodigo = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID de la unidad a modificar"));
+	        // Comprueba que existe la unidad y en caso que exista procede a actualizarla
 	        if (uc.findByPK(comprobarCodigo).getTutoria() != null) {
 		        JOptionPane.showMessageDialog(null, "A continuación se procedera a actualizar la unidad seleccionada. \n Indique bien los valores de la unidad");
 		        u1.setTutoria(String.valueOf(JOptionPane.showInputDialog("Inserte la unidad")));
@@ -221,12 +226,14 @@ public class MetodosSQL {
 		try {
 			ControladorUnidades uc = new ControladorUnidades();
 			int comprobarCodigo = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID de la unidad a modificar"));
+			// Comprueba que existe la unidad y en caso que exista procede a eliminarla
 			if (uc.findByPK(comprobarCodigo).getTutoria() != null) {
 		        uc.borrarUnidad(uc.findByPK(comprobarCodigo));
 			}
 		} catch (NoResultException nre) {
 		   	 JOptionPane.showMessageDialog(null, "La unidad seleccionada no existe");
+		} catch (ClassCastException cce) {
+			JOptionPane.showMessageDialog(null, "No es posible eliminar la unidad. Existen alumnos registrados");
 		}
-    	
     }
 }
