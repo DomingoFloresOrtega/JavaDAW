@@ -17,7 +17,7 @@ public class Alumnado implements Serializable {
 	@Id
 	private int codAlumnado;
 
-	private byte alergias;
+	private boolean alergias;
 
 	private String ape1Alumnado;
 
@@ -49,12 +49,13 @@ public class Alumnado implements Serializable {
 		this.codAlumnado = codAlumnado;
 	}
 
-	public byte getAlergias() {
-		return this.alergias;
+	public boolean isAlergias() {
+		return alergias;
 	}
 
-	public void setAlergias(byte alergias) {
+	public void setAlergias(boolean alergias) {
 		this.alergias = alergias;
+		
 	}
 
 	public String getApe1Alumnado() {
