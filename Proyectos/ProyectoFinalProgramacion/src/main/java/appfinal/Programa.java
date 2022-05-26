@@ -9,7 +9,6 @@ public class Programa {
             
             ImageIcon iconHome = new ImageIcon("Imagenes/home.png");
             
-            
             // Seleccion de categoria
             String[] opciones = {"Alumnado","Tutores","Unidades","Opciones"};
             // Se pide con que categoria trabajar

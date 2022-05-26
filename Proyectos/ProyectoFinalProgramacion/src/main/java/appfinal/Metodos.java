@@ -126,7 +126,7 @@ public class Metodos {
             	
             	for (Alumnado a : listaAlumnos) {
             		JOptionPane.showMessageDialog(null, "El alumno " + a.getNombreAlumnado() + " " + a.getApe1Alumnado() + " " + a.getApe2Alumnado() + 
-            				" con ID " + a.getCodAlumnado() + " vive en " + a.getDireccion() + "(" + a.getCodpostal() + "," + a.getProvincia() + ")."
+            				" con ID " + a.getCodAlumnado() + " vive en " + a.getDireccion() + " (" + a.getCodpostal() + "," + a.getProvincia() + ")."
             						+ " El alumno pertenece al tutor con ID " + a.getTutore().getCodTutor());
         		}
             	
