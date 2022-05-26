@@ -110,15 +110,18 @@ public class Metodos {
      ************************************/
     
     public static void opcionAlumnadoListado(){
-        ImageIcon iconAlumno = new ImageIcon("Imagenes/alumnado.png");
+        ImageIcon iconInforme = new ImageIcon("Imagenes/informe.png");
         String [] botones = { "Por ID", "Todo el listado" };
         ControladorAlumnado ac = new ControladorAlumnado();
         
         int variable = JOptionPane.showOptionDialog (null, "Seleccione como desea obtener el listado", 
-                ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconAlumno, botones, botones[0]);
+                ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconInforme, botones, botones[0]);
+        
         
         switch (variable) {
-            case 1:
+         
+        	case 1:
+        		
             	List<Alumnado> listaAlumnos = ac.findAll();
             	
             	for (Alumnado a : listaAlumnos) {
@@ -132,17 +135,20 @@ public class Metodos {
             	int id = 0;
             	
             	id = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del usuario"));
-            	JOptionPane.showMessageDialog(null, ac.findById(id));
-        };
+            	JOptionPane.showMessageDialog(null, "El alumno " + ac.findById(id).getNombreAlumnado() + " " + ac.findById(id).getApe1Alumnado() + " " + ac.findById(id).getApe2Alumnado() + 
+        				" con ID " + ac.findById(id).getCodAlumnado() + " vive en " + ac.findById(id).getDireccion() + "(" + ac.findById(id).getCodpostal() + "," + ac.findById(id).getProvincia() + ")."
+        						+ " El alumno pertenece al tutor con ID " + ac.findById(id).getTutore().getCodTutor());
+         
+         };
     }
     
     public static void opcionTutoresListado(){
-        ImageIcon iconAlumno = new ImageIcon("Imagenes/alumnado.png");
+    	ImageIcon iconInforme = new ImageIcon("Imagenes/informe.png");
         String [] botones = { "Por ID", "Todo el listado" };
         ControladorTutores tc = new ControladorTutores();
         
         int variable = JOptionPane.showOptionDialog (null, "Seleccione como desea obtener el listado", 
-                ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconAlumno, botones, botones[0]);
+                ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconInforme, botones, botones[0]);
         
         switch (variable) {
             case 1:
@@ -159,17 +165,18 @@ public class Metodos {
             	int id = 0;
             	
             	id = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del usuario"));
-            	JOptionPane.showMessageDialog(null, tc.findByPK(id));
+            	JOptionPane.showMessageDialog(null, "El tutor " + tc.findByPK(id).getNomTutor() + " " + tc.findByPK(id).getApe1Tutor() + " " + tc.findByPK(id).getApe2Tutor()
+        		+ " vive en " + tc.findByPK(id).getDireccion() + ". Sus datos de contacto son: \n - Email: " + tc.findByPK(id).getEmail() + "\n - Telefono: " + tc.findByPK(id).getTel());
         };
     }
     
     public static void opcionUnidadesListado(){
-        ImageIcon iconAlumno = new ImageIcon("Imagenes/alumnado.png");
+    	ImageIcon iconInforme = new ImageIcon("Imagenes/informe.png");
         String [] botones = { "Por ID", "Todo el listado" };
         ControladorUnidades uc = new ControladorUnidades();
         
         int variable = JOptionPane.showOptionDialog (null, "Seleccione como desea obtener el listado", 
-                ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconAlumno, botones, botones[0]);
+                ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconInforme, botones, botones[0]);
         
         switch (variable) {
             case 1:
@@ -185,7 +192,8 @@ public class Metodos {
             	int id = 0;
             	
             	id = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del usuario"));
-            	JOptionPane.showMessageDialog(null, uc.findByPK(id));
+            	JOptionPane.showMessageDialog(null, "La unidad " + uc.findByPK(id).getTutoria() + " con ID " + uc.findByPK(id).getCodUnidad() + " permite un máximo de " + uc.findByPK(id).getNumMaxAlum() + " alumnos"
+        				+ ". El tutor de la unidad es " + uc.findByPK(id).getTutore().getNomTutor() + " " + uc.findByPK(id).getTutore().getApe1Tutor() + " " + uc.findByPK(id).getTutore().getApe2Tutor());
         };
     }
 }

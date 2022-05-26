@@ -11,6 +11,7 @@ import entidades.Unidade;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.swing.JOptionPane;
 
 import controladores.ControladorAlumnado;
@@ -85,7 +86,13 @@ public class MetodosSQL {
 /***************** TUTORES **************/
 	
 	public static void obtenerTutor(){
-		Metodos.opcionTutoresListado();
+		try {
+			Metodos.opcionTutoresListado();
+		} catch (NullPointerException npe) {
+			System.out.println("Fallito akigo");
+		} catch (NoResultException nre) {
+			JOptionPane.showMessageDialog(null, "El tutor no existe");
+		};
     }
 	
 	public static void matricularTutor(){
