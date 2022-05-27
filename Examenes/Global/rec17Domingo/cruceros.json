@@ -1,0 +1,42 @@
+[
+  {
+  "nombre": "Crucero Costa del Sol",
+  "destinos": ["Sabinillas", "Estepona","Marbella", "Málaga"],
+  "precio": 1232.23,
+  "numeroNoches": 5,
+  "puertoSalida": "Málaga",
+  "buque": "AguaMarina"
+  },
+  {
+  "nombre": "Crucero Pasión por el Mediterráneo",
+  "destinos": ["Valencia", "Barcelona","Montecarlo"],
+  "precio": 1132.23,
+  "numeroNoches": 6,
+  "puertoSalida": "Valencia",
+  "buque": "Adventure"
+  },
+  {
+  "nombre": "Crucero Islas Griegas",
+  "destinos": ["Venecia", "Dubrovnik","Mykonos", "Santorini", "Kotor"],
+  "precio": 2232.00,
+  "numeroNoches": 8,
+  "puertoSalida": "Venecia",
+  "buque": "Challenger"
+  },
+  {
+  "nombre": "Crucero Tierra de Vikingos",
+  "destinos": ["Kiel", "Copenhague","Alesum", "Fam", "Geirander"],
+  "precio": 1532.00,
+  "numeroNoches": 8,
+  "puertoSalida": "Kiel",
+  "buque": "Challenger"
+  },
+  {
+  "nombre": "Crucero La bella Italia",
+  "destinos": ["Túnez", "Palermo","Nápoles", "Roma", "Génova", "Marsella"],
+  "precio": 1832.00,
+  "numeroNoches": 9,
+  "puertoSalida": "Túnez",
+  "buque": "StarOfTheSeas"
+  }  
+]
