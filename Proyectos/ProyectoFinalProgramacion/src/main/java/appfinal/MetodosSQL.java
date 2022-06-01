@@ -200,12 +200,24 @@ public class MetodosSQL {
 			ControladorUnidades uc = new ControladorUnidades();
 			ControladorTutores tc = new ControladorTutores();
 	        Unidade u1 = new Unidade();
+	        Tutore t1 = new Tutore();
+	        List<Unidade> listaUnidades = uc.findAll();
+        	
+        	for (Unidade u : listaUnidades) {
+        		if (uc.findByPK(1) == null) {
+        			u1.setCodUnidad(1);
+        			u1.setNumMaxAlum("20");
+        			u1.setTutoria("Unidad 0");
+        		}
+        	}
 	        u1.setTutoria(String.valueOf(JOptionPane.showInputDialog("Inserte la unidad")));
 	        u1.setNumMaxAlum(String.valueOf(JOptionPane.showInputDialog("Inserte el número máximo de alumnos")));
 	        u1.setTutore(tc.findByPK(Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del tutor"))));
 	        uc.crearUnidad(u1);
 		} catch (NumberFormatException nfe) {
 	   	 JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
+	    } catch (NoResultException nre) {
+	    	JOptionPane.showMessageDialog(null, "No existe el tutor asignado");
 	    }
        
     }

@@ -15,10 +15,11 @@ public class Programa {
             String opcion = String.valueOf(JOptionPane.showInputDialog(null,"Centro: IES Sin Fin \n ¿Con que categoria quiere trabajar?", ":: GESTION DE CENTROS ::",JOptionPane.QUESTION_MESSAGE,iconHome,opciones, opciones[0]));
             // Guardo en la variable la categoria seleccionada
             seleccionCategoria(opcion);
+            
      }
         
 		// Segun la opción seleccionada se dirigirá a un menu u otro
-        public static void seleccionCategoria(String opcion){
+        public static void seleccionCategoria(String opcion) {
             
             switch (opcion) {
                 case "Alumnado":
