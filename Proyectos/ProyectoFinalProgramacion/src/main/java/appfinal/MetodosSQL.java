@@ -126,17 +126,24 @@ public class MetodosSQL {
 			ControladorTutores tc = new ControladorTutores();
 	        Tutore t1 = new Tutore();
 	        ControladorUnidades uc = new ControladorUnidades();
+	        Unidade u1 = new Unidade();
 	        t1.setNomTutor(String.valueOf(JOptionPane.showInputDialog("Inserte el nombre del tutor")));
 	        t1.setApe1Tutor(String.valueOf(JOptionPane.showInputDialog("Inserte el primer apellido del tutor")));
 	        t1.setApe2Tutor(String.valueOf(JOptionPane.showInputDialog("Inserte el segundo apellido del tutor (si tiene)")));
 	        t1.setDireccion(String.valueOf(JOptionPane.showInputDialog("Inserte la dirección del tutor")));
 	        t1.setEmail(String.valueOf(JOptionPane.showInputDialog("Indique el email del tutor")));
 	        t1.setTel(String.valueOf(JOptionPane.showInputDialog("Indique el telefono de contacto")));
+	        List<Unidade> listaUnidades = uc.findAll();
+	        for (Unidade u : listaUnidades) {
+        		JOptionPane.showMessageDialog(null, u.getCodUnidad() + " - " + u.getTutoria());
+    		}
 	        t1.setUnidade(uc.findByPK(Integer.parseInt(JOptionPane.showInputDialog("Indique el ID de la unidad"))));
 	        tc.crearTutor(t1);
 		} catch (NumberFormatException nfe) {
 	   	 JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
-	    }
+	    } catch (NoResultException nre) {
+		   	 JOptionPane.showMessageDialog(null, "La unidad seleccionada no existe");
+		}
     }
 	
 	public static void actualizarTutor(){
@@ -166,13 +173,15 @@ public class MetodosSQL {
 	public static void eliminarTutor(){
 		try {
 			ControladorTutores tc = new ControladorTutores();
-			int comprobarCodigo = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID de la unidad a modificar"));
+			int comprobarCodigo = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del tutor"));
 			// Comprueba que existe el tutor y en caso que exista procede a eliminarlo
 			if (tc.findByPK(comprobarCodigo).getNomTutor() != null) {
 		        tc.borrarTutor(tc.findByPK(comprobarCodigo));
 			}
 		} catch (NoResultException nre) {
 		   	 JOptionPane.showMessageDialog(null, "El tutor seleccionado no existe");
+		} catch (StackOverflowError soe) {
+			JOptionPane.showMessageDialog(null, "El tutor tiene asignada una unidad");
 		}
     }
 	
