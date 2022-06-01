@@ -24,6 +24,10 @@ public class Programa {
         System.out.println("========= APARTADO D =========");
         escribirCsv("porcentajes.csv", lista);
 
+        // Apartado E
+        System.out.println("======== APARTADO E ==========");
+        municipioMayor(lista);
+
         // Apartado F
         System.out.println("======== APARTADO F =========");
         Path directorio = Paths.get("./municipios");
@@ -43,6 +47,9 @@ public class Programa {
         // Apartado G
         System.out.println("======== APARTADO G =========");
         generarSubcarpetas(lista);
+
+        // Apartado H
+        System.out.println("======== APARTADO H =========");
     }
 
     public static void escribirCsv(String nombre, List<Porcentajes> lista) {
@@ -62,9 +69,11 @@ public class Programa {
     }
 
     public static void municipioMayor(List<Porcentajes> lista){
-        for (Porcentajes p :
-                lista) {
-            System.out.println(p.getMunicipio());
+
+        for (Porcentajes p : lista) {
+
+            // Sacar el máximo porcentaje
+
         }
     }
 
@@ -84,6 +93,15 @@ public class Programa {
             System.out.println("No tienes permisos");
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void generarFicheros(String nombre, List<Porcentajes> lista) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombre))) {
+
+            bw.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

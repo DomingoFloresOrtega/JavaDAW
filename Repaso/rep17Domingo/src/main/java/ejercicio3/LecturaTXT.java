@@ -1,6 +1,8 @@
 package ejercicio3;
 
 
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -12,28 +14,29 @@ public class LecturaTXT {
         List<Matriz> lista = new ArrayList<>();
         String[] tokens;
         String linea;
-        int contadorX = 0;
-        int contadorA = 0;
+        String[][] array = {};
 
         try (Scanner datosFichero = new Scanner(new File(nombre))) {
             while (datosFichero.hasNextLine()) {
+                System.out.println("hola");
                 linea = datosFichero.nextLine();
                 tokens = linea.split("\n");
 
                 for (int i = 0; i < tokens.length; i++) {
-                    if (tokens[i] == "a") {
-                        contadorA++;
-                    } else {
-                        contadorX++;
+                    for (int j = 0; j < i; j++) {
+                        System.out.println(tokens[i]);
+                        array[i][j] = tokens[i];
                     }
-                } else{
-                    System.out.println("sdasd");
+                }
+
+                for (int i = 0; i < array.length; i++) {
+                    for (int j = 0; j < i; j++) {
+                        System.out.println(array[i][j]);
+                    }
                 }
             }
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
         }
-        System.out.println(contadorX);
     }
-} catch(FileNotFoundException e){
-        System.out.println(e.getMessage());
 }
-        }
