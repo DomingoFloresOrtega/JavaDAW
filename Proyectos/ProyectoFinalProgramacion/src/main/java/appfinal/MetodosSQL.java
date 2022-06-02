@@ -160,7 +160,10 @@ public class MetodosSQL {
 	        t1.setDireccion(String.valueOf(JOptionPane.showInputDialog("Inserte la dirección del tutor")));
 	        t1.setEmail(String.valueOf(JOptionPane.showInputDialog("Indique el email del tutor")));
 	        t1.setTel(String.valueOf(JOptionPane.showInputDialog("Indique el telefono de contacto")));
-	        JOptionPane.showConfirmDialog(null, "¿Desea crear una unidad nueva?");
+	        int unidad = JOptionPane.showConfirmDialog(null, "¿Desea crear una unidad nueva?");
+	        if (unidad == 0) {
+	        	MetodosSQL.crearUnidad();
+	        }
 	        JOptionPane.showMessageDialog(null, "A continuación seleccione la unidad a asignar de las siguientes");
 	        List<Unidade> listaUnidades = uc.findAll();
 	        for (Unidade u : listaUnidades) {
@@ -168,6 +171,7 @@ public class MetodosSQL {
     		}
 	        t1.setUnidade(uc.findByPK(Integer.parseInt(JOptionPane.showInputDialog("Indique el ID de la unidad"))));
 	        tc.crearTutor(t1);
+	        
 	        salir = false;
 		} catch (NumberFormatException nfe) {
 	   	 JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
