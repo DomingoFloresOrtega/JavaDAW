@@ -22,106 +22,133 @@ import entidades.Unidade;
  * @author domingo
  */
 public class Metodos {
-    public static void opcionAlumnado(){
+    public static boolean opcionAlumnado(){
         ImageIcon iconAlumno = new ImageIcon("Imagenes/alumnado.png");
-        String [] botones = { "Dar de baja", "Modificar", "Matricular", "Listado" };
+        String [] botones = { "Dar de baja", "Modificar", "Matricular", "Listado", "Cancelar" };
+        boolean salir = true;
         
         int variable = JOptionPane.showOptionDialog (null, "Bienvenido al area del alumnado \n ¿Qué desea hacer hoy?", 
                 ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconAlumno, botones, botones[0]);
         
         switch (variable) {
+        	case 4:
+        		JOptionPane.showMessageDialog(null, "Hasta pronto");
+        		salir = false;
+        		break;
 	        case 3:
-	    		MetodosSQL.obtenerAlumnos();
+	        	salir = MetodosSQL.obtenerAlumnos();
 	    		break;
         	case 2:
-                MetodosSQL.matricularAlumno();
+        		salir = MetodosSQL.matricularAlumno();
                 break;
             case 1:
-                MetodosSQL.actualizarAlumno();
+            	salir = MetodosSQL.actualizarAlumno();
                 break;
             case 0:
-                MetodosSQL.eliminarAlumno();
+            	salir = MetodosSQL.eliminarAlumno();
                 break;
         };
+        
+        return salir;
     }
     
-    public static void opcionTutores(){
+    public static boolean opcionTutores(){
         ImageIcon iconTutor = new ImageIcon("Imagenes/tutor.png");
-        String [] botones = { "Dar de baja", "Modificar", "Dar de alta", "Listado" };
+        String [] botones = { "Dar de baja", "Modificar", "Dar de alta", "Listado", "Cancelar" };
+        boolean salir = true;
         
         int variable = JOptionPane.showOptionDialog (null, "Bienvenido al area de tutoria \n ¿Qué desea hacer hoy?", 
                 ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconTutor, botones, botones[0]);
         
         switch (variable) {
+	        case 4:
+	    		JOptionPane.showMessageDialog(null, "Hasta pronto");
+	    		salir = false;
+	    		break;
         	case 3:
-        		MetodosSQL.obtenerTutor();
+        		salir = MetodosSQL.obtenerTutor();
         		break;
         	case 2:
-                MetodosSQL.matricularTutor();
+        		salir = MetodosSQL.matricularTutor();
                 break;
             case 1:
-                MetodosSQL.actualizarTutor();
+            	salir = MetodosSQL.actualizarTutor();
                 break;
             case 0:
-                MetodosSQL.eliminarTutor();
+            	salir = MetodosSQL.eliminarTutor();
                 break;
         };
+        
+        return salir;
     }
     
-    public static void opcionUnidades(){
+    public static boolean opcionUnidades(){
         ImageIcon iconUnidad = new ImageIcon("Imagenes/unidad.png");
-        String [] botones = { "Eliminar", "Modificar", "Agregar", "Listado" };
+        String [] botones = { "Eliminar", "Modificar", "Agregar", "Listado", "Cancelar" };
+        boolean salir = true;
         
         int variable = JOptionPane.showOptionDialog (null, "Bienvenido al area de unidades \n ¿Qué desea hacer hoy?", 
                 ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconUnidad, botones, botones[0]);
         
         switch (variable) {
-	        case 3:
-	    		MetodosSQL.obtenerUnidad();
+	        case 4:
+	    		JOptionPane.showMessageDialog(null, "Hasta pronto");
+	    		salir = false;
+	    		break;
+        	case 3:
+	        	salir = MetodosSQL.obtenerUnidad();
 	    		break;
         	case 2:
-                MetodosSQL.crearUnidad();
+        		salir = MetodosSQL.crearUnidad();
                 break;
             case 1:
-                MetodosSQL.modificarUnidad();
+            	salir = MetodosSQL.modificarUnidad();
                 break;
             case 0:
-                MetodosSQL.eliminarUnidad();
+            	salir = MetodosSQL.eliminarUnidad();
                 break;
         };
+        
+        return salir;
     }
     
-    public static void opcionAjustes(){
+    public static boolean opcionAjustes(){
         ImageIcon iconAjuste = new ImageIcon("Imagenes/ajustes.png");
-        String [] botones = { "Generar listado" };
+        String [] botones = { "Exportar", "Importar", "Cancelar" };
+        boolean salir = true;
         
         int variable = JOptionPane.showOptionDialog (null, "Bienvenido al área de configuración \n ¿Qué desea hacer hoy?", 
                 "Area de configuración", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconAjuste, botones, botones[0]);
         
         switch (variable) {
-            case 0:
-                GenerarLista.seleccionGenerar();
+	        case 2:
+	    		JOptionPane.showMessageDialog(null, "Hasta pronto");
+	    		salir = false;
+	    		break;
+        	case 0:
+                salir = GenerarLista.seleccionGenerar();
                 break;
         };
+        
+        return salir;
     }
     
     /************************************
      *********** LISTADOS  **************
      ************************************/
     
-    public static void opcionAlumnadoListado(){
+    public static boolean opcionAlumnadoListado(){
         ImageIcon iconInforme = new ImageIcon("Imagenes/informe.png");
         String [] botones = { "Por ID", "Todo el listado" };
         ControladorAlumnado ac = new ControladorAlumnado();
+        boolean salir = true;
         
         int variable = JOptionPane.showOptionDialog (null, "Seleccione como desea obtener el listado", 
                 ":: GESTION DE CENTROS :: - IES Sin Fin", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, iconInforme, botones, botones[0]);
         
         
         switch (variable) {
-         
-        	case 1:
-        		
+        	case 1:	
             	List<Alumnado> listaAlumnos = ac.findAll();
             	
             	for (Alumnado a : listaAlumnos) {
@@ -129,7 +156,7 @@ public class Metodos {
             				" con ID " + a.getCodAlumnado() + " vive en " + a.getDireccion() + " (" + a.getCodpostal() + "," + a.getProvincia() + ")."
             						+ " El alumno pertenece al tutor con ID " + a.getTutore().getCodTutor());
         		}
-            	
+            	salir = false;
             	break;
             case 0:
             	int id = 0;
@@ -139,7 +166,11 @@ public class Metodos {
         				" con ID " + ac.findById(id).getCodAlumnado() + " vive en " + ac.findById(id).getDireccion() + "(" + ac.findById(id).getCodpostal() + "," + ac.findById(id).getProvincia() + ")."
         						+ " El alumno pertenece al tutor con ID " + ac.findById(id).getTutore().getCodTutor());
          
-         };
+         		salir = false;
+         		break;
+        };
+        
+         return salir;
     }
     
     public static void opcionTutoresListado(){

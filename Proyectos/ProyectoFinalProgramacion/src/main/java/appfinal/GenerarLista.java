@@ -25,8 +25,9 @@ import entidades.Unidade;
  * @author domingo
  */
 public class GenerarLista {
-    public static void seleccionGenerar(){
+    public static boolean seleccionGenerar(){
     	ImageIcon iconGenerar = new ImageIcon("Imagenes/informe.png");
+    	boolean salir = true;
         
         // Seleccion de categoria
         String[] opciones = {"Alumnado","Tutores","Unidades"};
@@ -35,18 +36,21 @@ public class GenerarLista {
         
         switch (opcion) {
 	        case "Alumnado":
-	    		generarAlumnado();
+	    		salir = generarAlumnado();
 	    		break;
         	case "Tutores":
-                generarTutores();
+                salir = generarTutores();
                 break;
             case "Unidades":
-                generarUnidades();
+                salir = generarUnidades();
                 break;
         };
+        
+        return salir;
     }
     
-    public static void generarAlumnado(){
+    public static boolean generarAlumnado(){
+    	boolean salir = true;
         String idFichero = "RelAlum.csv";
         String tmp;
         ControladorAlumnado ac = new ControladorAlumnado();
@@ -71,12 +75,16 @@ public class GenerarLista {
         	
             flujo.flush();
             JOptionPane.showMessageDialog(null, "Fichero " + idFichero + " creado correctamente.");
+            salir = false;
         } catch (IOException e) {
             System.out.println(e.getMessage());
         };
+        
+        return salir;
     }
     
-    public static void generarTutores(){
+    public static boolean generarTutores(){
+    	boolean salir = true;
         String idFichero = "RelTut.csv";
         String tmp;
         ControladorTutores tc = new ControladorTutores();
@@ -99,12 +107,16 @@ public class GenerarLista {
         	
             flujo.flush();
             JOptionPane.showMessageDialog(null, "Fichero " + idFichero + " creado correctamente.");
+            salir = false;
         } catch (IOException e) {
             System.out.println(e.getMessage());
         };
+        
+        return salir;
     }
     
-    public static void generarUnidades(){
+    public static boolean generarUnidades(){
+    	boolean salir = true;
         String idFichero = "RelUni.csv";
         String tmp;
         ControladorUnidades uc = new ControladorUnidades();
@@ -123,8 +135,11 @@ public class GenerarLista {
         	
             flujo.flush();
             JOptionPane.showMessageDialog(null, "Fichero " + idFichero + " creado correctamente.");
+            salir = false;
         } catch (IOException e) {
             System.out.println(e.getMessage());
         };
+        
+        return salir;
     }
 }
