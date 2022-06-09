@@ -15,12 +15,13 @@ public class Programa {
 
         // Apartado E
         System.out.println("========== APARTADO E ==========");
-        Map<String,String[]> listaMap = mapCruceros(lista);
+        Map<String,ArrayList<Cruceros>> listaMap = new TreeMap<>();
+        listaMap = mapCruceros(lista);
         listaMap.forEach((k, v) -> System.out.println(k + " -> " + Arrays.toString(v)));
     }
 
-    private static Map<String, String[]> mapCruceros(List<Cruceros> listaCruceros) {
-        Map<String, String[]> mapCruceros = new HashMap<>();
+    private static Map<String, ArrayList<Cruceros>> mapCruceros(List<Cruceros> listaCruceros) {
+        Map<String, ArrayList<Cruceros>> mapCruceros = new HashMap<>();
         SortedMap<String,String[]> mapCrucerosSort;
         listaCruceros.forEach(cruceros -> {
             mapCruceros.put(cruceros.getNombre(), cruceros.getDestinos());

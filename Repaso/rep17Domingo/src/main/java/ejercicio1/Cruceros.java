@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class Cruceros {
     private String nombre;
-    private String[] destinos;
+    private ArrayList<> destinos;
     private double precio;
     private int numeroNoches;
     private String puertoSalida;
