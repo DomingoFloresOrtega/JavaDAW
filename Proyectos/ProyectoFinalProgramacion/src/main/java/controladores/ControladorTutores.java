@@ -76,15 +76,6 @@ public class ControladorTutores {
 
 		}
 
-		public Tutore findByNombre(String nombre) {
-			this.em = entityManagerFactory.createEntityManager();
-			this.consulta = em.createNamedQuery("Tutores.findNombre");
-			this.consulta.setParameter("Nombre", nombre);
-			Tutore a = (Tutore) consulta.getSingleResult();
-			this.em.close();
-			return a;
-		}
-
 		public List<Tutore> findAll() {
 			this.em = entityManagerFactory.createEntityManager();
 			this.consulta = em.createNamedQuery("Tutore.findAll");

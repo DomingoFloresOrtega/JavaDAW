@@ -67,15 +67,6 @@ public class ControladorAlumnado {
 			return aux;
 		}
 
-		public Alumnado findByNombre(String nombre) {
-			this.em = entityManagerFactory.createEntityManager();
-			this.consulta = em.createNamedQuery("Alumnado.findNombre");
-			this.consulta.setParameter("Nombre", nombre);
-			Alumnado a = (Alumnado) consulta.getSingleResult();
-			this.em.close();
-			return a;
-		}
-
 		public List<Alumnado> findAll() {
 			this.em = entityManagerFactory.createEntityManager();
 			this.consulta = em.createNamedQuery("Alumnado.findAll");

@@ -36,7 +36,7 @@ public class MetodosSQL {
 			JOptionPane.showMessageDialog(null, "El alumno/a no existe");
 		};
 		
-		return salir;
+		return true;
 	}
 	
 	public static boolean matricularAlumno(){
@@ -54,6 +54,7 @@ public class MetodosSQL {
         	if (tutor == 0) {
 	        	MetodosSQL.matricularTutor();
 	        }
+        	// Comienza a matricular
 	        String nombre = String.valueOf(JOptionPane.showInputDialog("Inserte el nombre del alumno"));
 	        String ape1 = String.valueOf(JOptionPane.showInputDialog("Inserte el primer apellido del alumno"));
 	        String ape2 = String.valueOf(JOptionPane.showInputDialog("Inserte el segundo apellido del alumno (si tiene)"));
@@ -71,9 +72,14 @@ public class MetodosSQL {
 	        JOptionPane.showMessageDialog(null, "A continuación seleccione el tutor a asignar de las siguientes");
 	        List<Tutore> listaTutores = tc.findAll();
 	        for (Tutore t : listaTutores) {
-        		JOptionPane.showMessageDialog(null, t.getCodTutor() + " - " + t.getNomTutor() + " " + t.getApe1Tutor() + " (" + t.getUnidade().getCodUnidad() + " " + t.getUnidade().getTutoria() + ")");
+	        	if (Objects.isNull(t.getUnidade())) {
+		    		JOptionPane.showMessageDialog(null, t.getCodTutor() + " - " + t.getNomTutor() + " " + t.getApe1Tutor() + " (Sin unidad asignada)");
+		    	} else {
+		    		JOptionPane.showMessageDialog(null, t.getCodTutor() + " - " + t.getNomTutor() + " " + t.getApe1Tutor() + " (" + t.getUnidade().getCodUnidad() + " - " + t.getUnidade().getTutoria() + ")");
+		    	}
     		}
 	        a1.setTutore(tc.findByPK(Integer.parseInt(JOptionPane.showInputDialog("Inserte el ID del tutor"))));
+	        // Si no existen campos obligatorios en blanco, inserta los datos
 	        if (nombre.length() != 0 && ape1.length() != 0 && direccion.length() != 0 && provincia.length() != 0 && codigo.length() != 0) {
 	        	ac.crearAlumno(a1);
 		        JOptionPane.showMessageDialog(null, "El alumno se ha creado correctamente");
@@ -98,27 +104,46 @@ public class MetodosSQL {
 	    	ControladorTutores tc = new ControladorTutores();
 	        Alumnado a1 = new Alumnado();
 	        int alergia = 0;
+	        boolean alergias = true;
 	        int comprobarCodigo = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del usuario a modificar"));
 		        // Comprueba que existe el alumno y en caso que exista procede a actualizarlo
 		        if (ac.findById(comprobarCodigo).getNombreAlumnado() != null){
 		        	a1.setCodAlumnado(comprobarCodigo);
+		        	// Si el alumno es correcto, ejecuta
 		        	JOptionPane.showMessageDialog(null, "A continuación se procedera a actualizar al usuario seleccionado. \n Indique bien los valores del usuario");
-			        a1.setNombreAlumnado(String.valueOf(JOptionPane.showInputDialog("Inserte el nombre del alumno")));
-			        a1.setApe1Alumnado(String.valueOf(JOptionPane.showInputDialog("Inserte el primer apellido del alumno")));
-			        a1.setApe2Alumnado(String.valueOf(JOptionPane.showInputDialog("Inserte el segundo apellido del alumno (si tiene)")));
-			        a1.setDireccion(String.valueOf(JOptionPane.showInputDialog("Inserte la dirección del alumno")));
-			        a1.setProvincia(String.valueOf(JOptionPane.showInputDialog("Inserte la provincia del alumno")));
-			        a1.setCodpostal(String.valueOf(JOptionPane.showInputDialog("Inserte el codigo postal del alumno")));
+		        	String nombre = String.valueOf(JOptionPane.showInputDialog("Inserte el nombre del alumno"));
+			        String ape1 = String.valueOf(JOptionPane.showInputDialog("Inserte el primer apellido del alumno"));
+			        String ape2 = String.valueOf(JOptionPane.showInputDialog("Inserte el segundo apellido del alumno (si tiene)"));
+			        String direccion = String.valueOf(JOptionPane.showInputDialog("Inserte la dirección del alumno"));
+			        String provincia = String.valueOf(JOptionPane.showInputDialog("Inserte la provincia del alumno"));
+			        String codigo = String.valueOf(JOptionPane.showInputDialog("Inserte el codigo postal del alumno"));
 			        // Comprobación y conversión de alergias
 			        alergia = Integer.parseInt(JOptionPane.showInputDialog("Inserte 0 si el alumno no tiene alergias. En caso contrario inserte 1"));
 			        if (alergia == 0) {
-			        	a1.setAlergias(false);
+			        	alergias = false;
 			        } else {
-			        	a1.setAlergias(true);
+			        	alergias = true;
 			        }
-			        a1.setDesAlergias(String.valueOf(JOptionPane.showInputDialog("En caso de presentar alergias, especifiquelo")));
+			        String desAlergias = String.valueOf(JOptionPane.showInputDialog("En caso de presentar alergias, especifiquelo"));
+			        JOptionPane.showMessageDialog(null, "A continuación seleccione el tutor a asignar de las siguientes");
+			        List<Tutore> listaTutores = tc.findAll();
+			        for (Tutore t : listaTutores) {
+			        	// Indica la unidad de los tutores
+			        	if (Objects.isNull(t.getUnidade())) {
+				    		JOptionPane.showMessageDialog(null, t.getCodTutor() + " - " + t.getNomTutor() + " " + t.getApe1Tutor() + " (Sin unidad asignada)");
+				    	} else {
+				    		JOptionPane.showMessageDialog(null, t.getCodTutor() + " - " + t.getNomTutor() + " " + t.getApe1Tutor() + " (" + t.getUnidade().getCodUnidad() + " - " + t.getUnidade().getTutoria() + ")");
+				    	}
+		    		}
 			        a1.setTutore(tc.findByPK(Integer.parseInt(JOptionPane.showInputDialog("Inserte el ID del tutor"))));
-			        ac.modificarAlumno(a1);
+			        // Si no existen campos obligatorios en blanco, inserta los datos
+			        if (nombre.length() != 0 && ape1.length() != 0 && direccion.length() != 0 && provincia.length() != 0 && codigo.length() != 0) {
+			        	ac.modificarAlumno(a1);
+				        JOptionPane.showMessageDialog(null, "El alumno se ha modificado correctamente");
+			        } else {
+			        	JOptionPane.showMessageDialog(null, "Se han introducido campos obligatorios en blanco");
+			        }
+			        
 			        salir = false;
 		        }
 		} catch (NumberFormatException nfe) {
@@ -162,7 +187,7 @@ public class MetodosSQL {
 			JOptionPane.showMessageDialog(null, "El tutor no existe");
 		};
 		
-		return salir;
+		return true;
     }
 	
 	public static boolean matricularTutor(){
@@ -280,7 +305,7 @@ public class MetodosSQL {
 			JOptionPane.showMessageDialog(null, "La unidad no existe");
 		};
 		
-		return salir;
+		return true;
     }
 	
 	public static boolean crearUnidad(){
@@ -294,7 +319,7 @@ public class MetodosSQL {
 	        List<Unidade> listaUnidades = uc.findAll();
         	
         	for (Unidade u : listaUnidades) {
-        		if (uc.findByPK(1) == null) {
+        		if (Objects.isNull(uc.findByPK(1))) {
         			u1.setCodUnidad(1);
         			u1.setNumMaxAlum("20");
         			u1.setTutoria("Unidad 0");
@@ -324,7 +349,9 @@ public class MetodosSQL {
 	   	 JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
 	    } catch (NoResultException nre) {
 	    	JOptionPane.showMessageDialog(null, "No existe el tutor asignado");
-	    }
+	    } catch (StackOverflowError soe) {
+			JOptionPane.showMessageDialog(null, "La unidad seleccionada tiene asignado un tutor");
+		}
 		
 		return salir;
     }
@@ -350,6 +377,8 @@ public class MetodosSQL {
 	    	 JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
 	    } catch (NoResultException nre) {
 		   	 JOptionPane.showMessageDialog(null, "La unidad seleccionada no existe");
+		} catch (StackOverflowError soe) {
+			JOptionPane.showMessageDialog(null, "La unidad seleccionada tiene asignado un tutor");
 		}
 		
 		return salir;

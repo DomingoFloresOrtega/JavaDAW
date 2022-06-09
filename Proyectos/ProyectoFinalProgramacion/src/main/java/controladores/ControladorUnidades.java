@@ -75,15 +75,6 @@ public class ControladorUnidades {
 
 			}
 
-			public Unidade findByUnidad(String unidad) {
-				this.em = entityManagerFactory.createEntityManager();
-				this.consulta = em.createNamedQuery("Alumnado.findNombre");
-				this.consulta.setParameter("Nombre", unidad);
-				Unidade a = (Unidade) consulta.getSingleResult();
-				this.em.close();
-				return a;
-			}
-
 			public List<Unidade> findAll() {
 				this.em = entityManagerFactory.createEntityManager();
 				this.consulta = em.createNamedQuery("Unidade.findAll");
