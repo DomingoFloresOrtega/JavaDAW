@@ -125,6 +125,8 @@ public class Metodos {
 	    		JOptionPane.showMessageDialog(null, "Hasta pronto");
 	    		salir = false;
 	    		break;
+	        case 1:
+	        	Backup.restaurarBackup();
         	case 0:
                 salir = GenerarLista.seleccionGenerar();
                 break;

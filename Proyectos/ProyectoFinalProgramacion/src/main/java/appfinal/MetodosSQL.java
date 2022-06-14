@@ -316,6 +316,8 @@ public class MetodosSQL {
 			ControladorTutores tc = new ControladorTutores();
 	        Unidade u1 = new Unidade();
 	        Tutore t1 = new Tutore();
+	        int numFilas = 0;
+	        String sql = "insert into unidades values (?,?,?,?)";
 	        List<Unidade> listaUnidades = uc.findAll();
         	
         	for (Unidade u : listaUnidades) {
@@ -345,6 +347,8 @@ public class MetodosSQL {
 		    u1.setTutore(tc.findByPK(Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del tutor"))));
 	        uc.crearUnidad(u1);
 	        salir = false;
+	        
+	        
 		} catch (NumberFormatException nfe) {
 	   	 JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
 	    } catch (NoResultException nre) {

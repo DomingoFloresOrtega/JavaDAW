@@ -57,8 +57,7 @@ public class GenerarLista {
         List<Alumnado> listado = ac.findAll();
         
         try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
-        	flujo.write("ID;" + "Nombre;" + "Apellido1;" + "Apellido2;" + "Direccion;" + "CodPostal;" + "Provincia;" + "Alergias;" + "DesAlergias");
-        	flujo.newLine();
+        	
         	for (Alumnado a : listado) {
 				flujo.write(a.getCodAlumnado() + ";"
 						+ a.getNombreAlumnado() + ";"
@@ -68,7 +67,8 @@ public class GenerarLista {
 						+ a.getCodpostal() + ";"
 						+ a.getProvincia() + ";"
 						+ a.isAlergias() + ";"
-						+ a.getDesAlergias() + ";");
+						+ a.getDesAlergias() + ";"
+						+ a.getTutore().getCodTutor());
 				flujo.newLine();
 			}
         	
