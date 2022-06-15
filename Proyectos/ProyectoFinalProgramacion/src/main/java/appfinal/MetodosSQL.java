@@ -9,12 +9,19 @@ import entidades.Alumnado;
 import entidades.Tutore;
 import entidades.Unidade;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.NoResultException;
 import javax.swing.JOptionPane;
 
+import conexion.Conexion;
 import controladores.ControladorAlumnado;
 import controladores.ControladorTutores;
 import controladores.ControladorUnidades;
@@ -24,6 +31,8 @@ import controladores.ControladorUnidades;
  * @author domingo
  */
 public class MetodosSQL {
+	
+	private static Connection con = Conexion.getInstance();
 	
     /***************** ALUMNADO **************/
 	
@@ -308,56 +317,64 @@ public class MetodosSQL {
 		return true;
     }
 	
-	public static boolean crearUnidad(){
+	public static boolean crearUnidad() throws SQLException{
+		
 		boolean salir = true;
-		
-		try {
-			ControladorUnidades uc = new ControladorUnidades();
-			ControladorTutores tc = new ControladorTutores();
-	        Unidade u1 = new Unidade();
-	        Tutore t1 = new Tutore();
-	        int numFilas = 0;
-	        String sql = "insert into unidades values (?,?,?,?)";
-	        List<Unidade> listaUnidades = uc.findAll();
-        	
-        	for (Unidade u : listaUnidades) {
-        		if (Objects.isNull(uc.findByPK(1))) {
-        			u1.setCodUnidad(1);
-        			u1.setNumMaxAlum("20");
-        			u1.setTutoria("Unidad 0");
-        		}
-        	}
-        	
-        	JOptionPane.showMessageDialog(null, "Antes de crear una unidad, debe crear un profesor");
-        	int tutor = JOptionPane.showConfirmDialog(null, "¿Desea crear un tutor nuevo?");
-        	if (tutor == 0) {
-	        	MetodosSQL.matricularTutor();
-	        }
-	        u1.setTutoria(String.valueOf(JOptionPane.showInputDialog("Inserte la unidad")));
-	        u1.setNumMaxAlum(String.valueOf(JOptionPane.showInputDialog("Inserte el número máximo de alumnos")));
-	        JOptionPane.showMessageDialog(null, "A continuación seleccione el tutor/a a asignar de los siguientes");
-		    List<Tutore> listaTutores = tc.findAll();
-		    for (Tutore t : listaTutores) {
-		    	if (Objects.isNull(t.getUnidade())) {
-		    		JOptionPane.showMessageDialog(null, t.getCodTutor() + " - " + t.getNomTutor() + " " + t.getApe1Tutor() + " (Sin unidad asignada)");
-		    	} else {
-		    		JOptionPane.showMessageDialog(null, t.getCodTutor() + " - " + t.getNomTutor() + " " + t.getApe1Tutor() + " (" + t.getUnidade().getCodUnidad() + " - " + t.getUnidade().getTutoria() + ")");
-		    	}
-		    }
-		    u1.setTutore(tc.findByPK(Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del tutor"))));
-	        uc.crearUnidad(u1);
-	        salir = false;
-	        
-	        
-		} catch (NumberFormatException nfe) {
-	   	 JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
-	    } catch (NoResultException nre) {
-	    	JOptionPane.showMessageDialog(null, "No existe el tutor asignado");
-	    } catch (StackOverflowError soe) {
-			JOptionPane.showMessageDialog(null, "La unidad seleccionada tiene asignado un tutor");
+		Unidade unidad = new Unidade();
+		ControladorTutores tc = new ControladorTutores();
+		int numFilas = 0;
+		int idMax = 0;
+        String sql = "insert into unidades values (?,?,?,?)";
+        
+        // Obtengo ultima unidad
+        String id = "select MAX(codUnidad) from unidades";
+        try (Statement stmt = con.createStatement()) {
+          ResultSet rs = stmt.executeQuery(id);
+          while (rs.next()) {
+            idMax = rs.getInt("MAX(codUnidad)");
+          }
+        }
+        
+        // Preguntar si se quiere crear un tutor
+        
+        JOptionPane.showMessageDialog(null, "Antes de crear una unidad, debe crear un tutor");
+    	int tutor = JOptionPane.showConfirmDialog(null, "¿Desea crear un tutor nuevo?");
+    	if (tutor == 0) {
+        	MetodosSQL.matricularTutor();
+        }
+        // Preparo consulta manual
+        try (PreparedStatement prest = con.prepareStatement(sql)) {
+                // Establecemos los parámetros de la sentencia
+        		prest.setInt(1, idMax+1);
+                prest.setString(2, String.valueOf(JOptionPane.showInputDialog("Inserte la unidad")));
+                prest.setString(3, String.valueOf(JOptionPane.showInputDialog("Inserte el número máximo de alumnos")));
+                // Obtengo lista de tutores
+                JOptionPane.showMessageDialog(null, "A continuación seleccione el tutor/a a asignar de los siguientes");
+    		    List<Tutore> listaTutores = tc.findAll();
+    		    for (Tutore t : listaTutores) {
+    		    	if (Objects.isNull(t.getUnidade())) {
+    		    		JOptionPane.showMessageDialog(null, t.getCodTutor() + " - " + t.getNomTutor() + " " + t.getApe1Tutor() + " (Sin unidad asignada)");
+    		    	} else {
+    		    		JOptionPane.showMessageDialog(null, t.getCodTutor() + " - " + t.getNomTutor() + " " + t.getApe1Tutor() + " (" + t.getUnidade().getCodUnidad() + " - " + t.getUnidade().getTutoria() + ")");
+    		    	}
+    		    }
+                prest.setInt(4, Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del tutor")));
+
+                numFilas = prest.executeUpdate();
+                
+                salir = false;
+        } catch (NumberFormatException nfe) {
+   	   	 	JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
+   	    } catch (NoResultException nre) {
+   	    	JOptionPane.showMessageDialog(null, "No existe el tutor asignado");
+   	    } catch (StackOverflowError soe) {
+   			JOptionPane.showMessageDialog(null, "La unidad seleccionada tiene asignado un tutor");
+   		} catch (SQLIntegrityConstraintViolationException sicve) {
+			JOptionPane.showMessageDialog(null, "No existe el tutor especificado o esta asignado a una unidad");
 		}
+        
+        return salir;
 		
-		return salir;
     }
 	
 	public static boolean modificarUnidad(){

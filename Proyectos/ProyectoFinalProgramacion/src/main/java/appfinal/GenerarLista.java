@@ -58,6 +58,8 @@ public class GenerarLista {
         
         try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
         	
+        	flujo.write("ID;" + "Nombre;" + "Apellido1;" + "Apellido2;" + "Direccion;" + "CodigoPostal;" + "Provincia;" + "Alergias;" + "DescripcionAlergias;" + "Tutor");
+        	flujo.newLine();
         	for (Alumnado a : listado) {
 				flujo.write(a.getCodAlumnado() + ";"
 						+ a.getNombreAlumnado() + ";"

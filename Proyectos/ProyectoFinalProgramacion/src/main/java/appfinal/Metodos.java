@@ -5,6 +5,7 @@
  */
 package appfinal;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -82,7 +83,7 @@ public class Metodos {
         return salir;
     }
     
-    public static boolean opcionUnidades(){
+    public static boolean opcionUnidades() throws SQLException{
         ImageIcon iconUnidad = new ImageIcon("Imagenes/unidad.png");
         String [] botones = { "Eliminar", "Modificar", "Agregar", "Listado", "Cancelar" };
         boolean salir = true;
@@ -114,7 +115,7 @@ public class Metodos {
     
     public static boolean opcionAjustes(){
         ImageIcon iconAjuste = new ImageIcon("Imagenes/ajustes.png");
-        String [] botones = { "Exportar", "Importar", "Cancelar" };
+        String [] botones = { "Generar Listados", "Backup", "Cancelar" };
         boolean salir = true;
         
         int variable = JOptionPane.showOptionDialog (null, "Bienvenido al área de configuración \n ¿Qué desea hacer hoy?", 
@@ -126,7 +127,8 @@ public class Metodos {
 	    		salir = false;
 	    		break;
 	        case 1:
-	        	Backup.restaurarBackup();
+	        	salir = Backup.menuBackup();
+	        	break;
         	case 0:
                 salir = GenerarLista.seleccionGenerar();
                 break;

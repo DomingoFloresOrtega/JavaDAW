@@ -1,11 +1,13 @@
 package appfinal;
 
+import java.sql.SQLException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Programa {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
             
             ImageIcon iconHome = new ImageIcon("Imagenes/home.png");
             boolean salir = true;
@@ -28,7 +30,7 @@ public class Programa {
      }
         
 		// Segun la opción seleccionada se dirigirá a un menu u otro
-        public static boolean seleccionCategoria(String opcion) {
+        public static boolean seleccionCategoria(String opcion) throws SQLException {
             boolean salir = true;
         	
             switch (opcion) {
