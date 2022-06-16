@@ -14,6 +14,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import javax.persistence.NoResultException;
+import javax.persistence.RollbackException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -165,7 +166,9 @@ public class Backup {
             }
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
-        }
+        } catch (RollbackException re) {
+			JOptionPane.showMessageDialog(null, "Existen datos duplicados en la tabla");
+		}
 
         // Restaurar alumnos/as
         System.out.println("Leyendo el fichero: " + idFicheroA);
@@ -190,7 +193,11 @@ public class Backup {
             }
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
-        }
+        } catch (RollbackException re) {
+			JOptionPane.showMessageDialog(null, "Existen datos duplicados en la tabla");
+		} catch (StackOverflowError soe) {
+			JOptionPane.showMessageDialog(null, "No existe la unidad");
+		}
         
      // Restaurar unidades
         System.out.println("Leyendo el fichero: " + idFicheroU);
@@ -219,11 +226,15 @@ public class Backup {
 		    } catch (StackOverflowError soe) {
 				JOptionPane.showMessageDialog(null, "La unidad seleccionada tiene asignado un tutor");
 			} catch (SQLIntegrityConstraintViolationException sicve) {
-			JOptionPane.showMessageDialog(null, "No existe el tutor especificado o esta asignado a una unidad");
+				JOptionPane.showMessageDialog(null, "No existe el tutor especificado o esta asignado a una unidad");
+			} catch (RollbackException re) {
+				JOptionPane.showMessageDialog(null, "Existen datos duplicados en la tabla");
 			}
         }
         
-        JOptionPane.showMessageDialog(null, "Copia de seguridad restaurada con exito");
+        if (salir = false) {
+        	JOptionPane.showMessageDialog(null, "Copia de seguridad restaurada con exito");
+        }
         
         return salir;
 	}

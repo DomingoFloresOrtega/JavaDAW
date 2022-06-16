@@ -35,6 +35,7 @@ public class Metodos {
         switch (variable) {
         	case 4:
         		Programa.menuCategorias();
+        		salir = false;
         		break;
 	        case 3:
 	        	salir = MetodosSQL.obtenerAlumnos();
@@ -53,7 +54,7 @@ public class Metodos {
         return salir;
     }
     
-    public static boolean opcionTutores(){
+    public static boolean opcionTutores() throws FileNotFoundException, SQLException{
         ImageIcon iconTutor = new ImageIcon("Imagenes/tutor.png");
         String [] botones = { "Dar de baja", "Modificar", "Dar de alta", "Listado", "Cancelar" };
         boolean salir = true;
@@ -63,7 +64,7 @@ public class Metodos {
         
         switch (variable) {
 	        case 4:
-	    		JOptionPane.showMessageDialog(null, "Hasta pronto");
+	    		Programa.menuCategorias();
 	    		salir = false;
 	    		break;
         	case 3:
@@ -83,7 +84,7 @@ public class Metodos {
         return salir;
     }
     
-    public static boolean opcionUnidades() throws SQLException{
+    public static boolean opcionUnidades() throws SQLException, FileNotFoundException{
         ImageIcon iconUnidad = new ImageIcon("Imagenes/unidad.png");
         String [] botones = { "Eliminar", "Modificar", "Agregar", "Listado", "Cancelar" };
         boolean salir = true;
@@ -93,7 +94,7 @@ public class Metodos {
         
         switch (variable) {
 	        case 4:
-	    		JOptionPane.showMessageDialog(null, "Hasta pronto");
+	    		Programa.menuCategorias();
 	    		salir = false;
 	    		break;
         	case 3:
@@ -123,7 +124,7 @@ public class Metodos {
         
         switch (variable) {
 	        case 2:
-	    		JOptionPane.showMessageDialog(null, "Hasta pronto");
+	    		Programa.menuCategorias();
 	    		salir = false;
 	    		break;
 	        case 1:

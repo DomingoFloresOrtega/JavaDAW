@@ -26,6 +26,7 @@ public class Programa {
         	if (opcion.equalsIgnoreCase("null")) {
             	JOptionPane.showMessageDialog(null, "Hasta pronto");
             	salir = false;
+            	break;
             } else {
             	salir = seleccionCategoria(opcion);
             }	
