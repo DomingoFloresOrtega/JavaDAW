@@ -5,13 +5,19 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
+import javax.persistence.NoResultException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import conexion.Conexion;
 import controladores.ControladorAlumnado;
 import controladores.ControladorTutores;
 import controladores.ControladorUnidades;
@@ -20,7 +26,10 @@ import entidades.Tutore;
 import entidades.Unidade;
 
 public class Backup {
-	public static boolean menuBackup() {
+	
+	private static Connection con = Conexion.getInstance();
+	
+	public static boolean menuBackup() throws FileNotFoundException, SQLException {
 		ImageIcon iconGenerar = new ImageIcon("Imagenes/informe.png");
     	boolean salir = true;
         
@@ -72,7 +81,6 @@ public class Backup {
 			}
         	
             flujo.flush();
-            JOptionPane.showMessageDialog(null, "Fichero " + idFicheroA + " creado correctamente.");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         };
@@ -93,7 +101,6 @@ public class Backup {
         	
         	
             flujo.flush();
-            JOptionPane.showMessageDialog(null, "Fichero " + idFicheroT + " creado correctamente.");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         };
@@ -104,23 +111,23 @@ public class Backup {
         	for (Unidade u : listadoU) {
 				flujo.write(u.getCodUnidad() + ";"
 						+ u.getTutoria() + ";"
-						+ u.getNumMaxAlum() + ";");
+						+ u.getNumMaxAlum() + ";"
+						+ u.getTutore().getCodTutor() + ";");
 				flujo.newLine();
 			}
         	
         	
             flujo.flush();
-            JOptionPane.showMessageDialog(null, "Fichero " + idFicheroU + " creado correctamente.");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         };
         
-        salir = false;
+        JOptionPane.showMessageDialog(null, "Copia de seguridad creada correctamente");
         
         return salir;
 	}
 	
-	public static boolean restaurarBackup() {
+	public static boolean restaurarBackup() throws SQLException, FileNotFoundException {
 		boolean salir = true;
 		Alumnado a = new Alumnado();
 		ControladorAlumnado ac = new ControladorAlumnado();
@@ -133,6 +140,9 @@ public class Backup {
         String idFicheroU = "RelUni.csv";
         String[] tokens;
         String linea;
+		Unidade unidad = new Unidade();
+		int numFilas = 0;
+        String sql = "insert into unidades values (?,?,?,?)";
         
      // Restaurar tutores/as
         System.out.println("Leyendo el fichero: " + idFicheroT);
@@ -186,23 +196,33 @@ public class Backup {
         System.out.println("Leyendo el fichero: " + idFicheroU);
 
         try (Scanner datosFichero = new Scanner(new File(idFicheroU), "UTF-8")) {
-            while (datosFichero.hasNextLine()) {
-                linea = datosFichero.nextLine();
-                tokens = linea.split(";");
-                
-                u.setCodUnidad(Integer.parseInt(tokens[0]));
-                u.setNumMaxAlum(tokens[1]);
-                u.setTutoria(tokens[2]);
-                u.setTutore(tc.findByPK(Integer.parseInt(tokens[3])));
-				
-				uc.crearUnidad(u);
-    				
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+	        try (PreparedStatement prest = con.prepareStatement(sql)) {
+	        	while (datosFichero.hasNextLine()) {
+	                linea = datosFichero.nextLine();
+	                tokens = linea.split(";");
+	                
+	             // Establecemos los parámetros de la sentencia
+	        		prest.setInt(1, Integer.parseInt(tokens[0]));
+	                prest.setString(2, tokens[1]);
+	                prest.setString(3, tokens[2]);
+	                prest.setInt(4, Integer.parseInt(tokens[3]));
+	
+	                numFilas = prest.executeUpdate();
+	                
+	                salir = false;
+	    				
+	            }
+	        } catch (NumberFormatException nfe) {
+		   	 	JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
+		    } catch (NoResultException nre) {
+		    	JOptionPane.showMessageDialog(null, "No existe el tutor asignado");
+		    } catch (StackOverflowError soe) {
+				JOptionPane.showMessageDialog(null, "La unidad seleccionada tiene asignado un tutor");
+			} catch (SQLIntegrityConstraintViolationException sicve) {
+			JOptionPane.showMessageDialog(null, "No existe el tutor especificado o esta asignado a una unidad");
+			}
         }
         
-        salir = false;
         JOptionPane.showMessageDialog(null, "Copia de seguridad restaurada con exito");
         
         return salir;

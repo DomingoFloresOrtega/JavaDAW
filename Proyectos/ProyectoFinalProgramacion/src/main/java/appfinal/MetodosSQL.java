@@ -90,14 +90,19 @@ public class MetodosSQL {
 	        a1.setTutore(tc.findByPK(Integer.parseInt(JOptionPane.showInputDialog("Inserte el ID del tutor"))));
 	        // Si no existen campos obligatorios en blanco, inserta los datos
 	        if (nombre.length() != 0 && ape1.length() != 0 && direccion.length() != 0 && provincia.length() != 0 && codigo.length() != 0) {
+	        	a1.setNombreAlumnado(nombre);
+	        	a1.setApe1Alumnado(ape1);
+	        	a1.setApe2Alumnado(ape2);
+	        	a1.setDireccion(direccion);
+	        	a1.setProvincia(provincia);
+	        	a1.setCodpostal(codigo);
+	        	a1.setAlergias(alergias);
+	        	a1.setDesAlergias(desAlergias);
 	        	ac.crearAlumno(a1);
 		        JOptionPane.showMessageDialog(null, "El alumno se ha creado correctamente");
 	        } else {
 	        	JOptionPane.showMessageDialog(null, "Se han introducido campos obligatorios en blanco");
 	        }
-	        
-	        
-	        salir = false;
 		} catch (NumberFormatException nfe) {
 	    	 JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
 	    }
@@ -147,13 +152,19 @@ public class MetodosSQL {
 			        a1.setTutore(tc.findByPK(Integer.parseInt(JOptionPane.showInputDialog("Inserte el ID del tutor"))));
 			        // Si no existen campos obligatorios en blanco, inserta los datos
 			        if (nombre.length() != 0 && ape1.length() != 0 && direccion.length() != 0 && provincia.length() != 0 && codigo.length() != 0) {
+			        	a1.setNombreAlumnado(nombre);
+			        	a1.setApe1Alumnado(ape1);
+			        	a1.setApe2Alumnado(ape2);
+			        	a1.setDireccion(direccion);
+			        	a1.setProvincia(provincia);
+			        	a1.setCodpostal(codigo);
+			        	a1.setAlergias(alergias);
+			        	a1.setDesAlergias(desAlergias);
 			        	ac.modificarAlumno(a1);
 				        JOptionPane.showMessageDialog(null, "El alumno se ha modificado correctamente");
 			        } else {
 			        	JOptionPane.showMessageDialog(null, "Se han introducido campos obligatorios en blanco");
 			        }
-			        
-			        salir = false;
 		        }
 		} catch (NumberFormatException nfe) {
 	   	 JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
@@ -173,7 +184,6 @@ public class MetodosSQL {
 			// Comprueba que existe el alumno y en caso que exista procede a eliminarlo
 			if (ac.findById(comprobarCodigo).getNombreAlumnado() != null) {
 		        ac.borrarAlumno(comprobarCodigo);
-		        salir = false;
 			}
 		} catch (NoResultException nre) {
 		   	 JOptionPane.showMessageDialog(null, "El alumno/a seleccionado no existe");
@@ -224,7 +234,6 @@ public class MetodosSQL {
 	        	t1.setTel(tel);
 	        	tc.crearTutor(t1);
 			    JOptionPane.showMessageDialog(null, "El tutor se ha creado correctamente");
-			    salir = false;
 	        } else {
 	        	JOptionPane.showMessageDialog(null, "Se han introducido campos obligatorios en blanco");
 	        } 
@@ -266,7 +275,6 @@ public class MetodosSQL {
 		        	t1.setTel(tel);
 		        	tc.modificarTutor(t1);
 				    JOptionPane.showMessageDialog(null, "El tutor se ha modificado correctamente");
-				    salir = false;
 		        } else {
 		        	JOptionPane.showMessageDialog(null, "Se han introducido campos obligatorios en blanco");
 		        }
@@ -291,7 +299,6 @@ public class MetodosSQL {
 			// Comprueba que existe el tutor y en caso que exista procede a eliminarlo
 			if (tc.findByPK(comprobarCodigo).getNomTutor() != null) {
 		        tc.borrarTutor(tc.findByPK(comprobarCodigo));
-		        salir = false;
 			}
 		} catch (NoResultException nre) {
 		   	 JOptionPane.showMessageDialog(null, "El tutor seleccionado no existe");
@@ -361,8 +368,6 @@ public class MetodosSQL {
                 prest.setInt(4, Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del tutor")));
 
                 numFilas = prest.executeUpdate();
-                
-                salir = false;
         } catch (NumberFormatException nfe) {
    	   	 	JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
    	    } catch (NoResultException nre) {
@@ -392,7 +397,6 @@ public class MetodosSQL {
 		        u1.setNumMaxAlum(String.valueOf(JOptionPane.showInputDialog("Inserte el número máximo de alumnos")));
 		        u1.setTutore(tc.findByPK(Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del tutor"))));
 		        uc.modificarUnidad(u1);
-		        salir = false;
 	        }
 		} catch (NumberFormatException nfe) {
 	    	 JOptionPane.showMessageDialog(null, "Se han introducido parametros erroneos o vacios");
@@ -414,7 +418,6 @@ public class MetodosSQL {
 			// Comprueba que existe la unidad y en caso que exista procede a eliminarla
 			if (uc.findByPK(comprobarCodigo).getTutoria() != null) {
 		        uc.borrarUnidad(uc.findByPK(comprobarCodigo));
-		        salir = false;
 			}
 		} catch (NoResultException nre) {
 		   	 JOptionPane.showMessageDialog(null, "La unidad seleccionada no existe");

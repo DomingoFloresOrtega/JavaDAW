@@ -5,6 +5,7 @@
  */
 package appfinal;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -23,7 +24,7 @@ import entidades.Unidade;
  * @author domingo
  */
 public class Metodos {
-    public static boolean opcionAlumnado(){
+    public static boolean opcionAlumnado() throws FileNotFoundException, SQLException{
         ImageIcon iconAlumno = new ImageIcon("Imagenes/alumnado.png");
         String [] botones = { "Dar de baja", "Modificar", "Matricular", "Listado", "Cancelar" };
         boolean salir = true;
@@ -33,15 +34,14 @@ public class Metodos {
         
         switch (variable) {
         	case 4:
-        		JOptionPane.showMessageDialog(null, "Hasta pronto");
-        		salir = false;
+        		Programa.menuCategorias();
         		break;
 	        case 3:
 	        	salir = MetodosSQL.obtenerAlumnos();
 	    		break;
         	case 2:
         		salir = MetodosSQL.matricularAlumno();
-                break;
+        		break;
             case 1:
             	salir = MetodosSQL.actualizarAlumno();
                 break;
@@ -113,7 +113,7 @@ public class Metodos {
         return salir;
     }
     
-    public static boolean opcionAjustes(){
+    public static boolean opcionAjustes() throws FileNotFoundException, SQLException{
         ImageIcon iconAjuste = new ImageIcon("Imagenes/ajustes.png");
         String [] botones = { "Generar Listados", "Backup", "Cancelar" };
         boolean salir = true;

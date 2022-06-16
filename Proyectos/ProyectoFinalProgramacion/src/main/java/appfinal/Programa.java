@@ -1,5 +1,6 @@
 package appfinal;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
@@ -7,30 +8,32 @@ import javax.swing.JOptionPane;
 
 public class Programa {
 
-	public static void main(String[] args) throws SQLException {
-            
-            ImageIcon iconHome = new ImageIcon("Imagenes/home.png");
-            boolean salir = true;
-            
-            // Seleccion de categoria
-            String[] opciones = {"Alumnado","Tutores","Unidades","Opciones"};
-            // Se pide con que categoria trabajar
-            String opcion = String.valueOf(JOptionPane.showInputDialog(null,"Centro: IES Sin Fin \n ¿Con que categoria quiere trabajar?", ":: GESTION DE CENTROS ::",JOptionPane.QUESTION_MESSAGE,iconHome,opciones, opciones[0]));
-            // Guardo en la variable la categoria seleccionada
-            
-            do {
-            	if (opcion.equalsIgnoreCase("null")) {
-                	JOptionPane.showMessageDialog(null, "Hasta pronto");
-                	salir = false;
-                } else {
-                	salir = seleccionCategoria(opcion);
-                }	
-            } while (salir);
-            
+	public static void main(String[] args) throws SQLException, FileNotFoundException {
+            menuCategorias();
      }
+	
+	public static void menuCategorias() throws FileNotFoundException, SQLException {
+		ImageIcon iconHome = new ImageIcon("Imagenes/home.png");
+        boolean salir = true;
+        
+        // Seleccion de categoria
+        String[] opciones = {"Alumnado","Tutores","Unidades","Opciones"};
+        // Se pide con que categoria trabajar
+        String opcion = String.valueOf(JOptionPane.showInputDialog(null,"Centro: IES Sin Fin \n ¿Con que categoria quiere trabajar?", ":: GESTION DE CENTROS ::",JOptionPane.QUESTION_MESSAGE,iconHome,opciones, opciones[0]));
+        // Guardo en la variable la categoria seleccionada
+        
+        do {
+        	if (opcion.equalsIgnoreCase("null")) {
+            	JOptionPane.showMessageDialog(null, "Hasta pronto");
+            	salir = false;
+            } else {
+            	salir = seleccionCategoria(opcion);
+            }	
+        } while (salir);
+	}
         
 		// Segun la opción seleccionada se dirigirá a un menu u otro
-        public static boolean seleccionCategoria(String opcion) throws SQLException {
+        public static boolean seleccionCategoria(String opcion) throws SQLException, FileNotFoundException {
             boolean salir = true;
         	
             switch (opcion) {

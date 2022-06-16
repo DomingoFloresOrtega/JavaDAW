@@ -77,7 +77,6 @@ public class GenerarLista {
         	
             flujo.flush();
             JOptionPane.showMessageDialog(null, "Fichero " + idFichero + " creado correctamente.");
-            salir = false;
         } catch (IOException e) {
             System.out.println(e.getMessage());
         };
@@ -109,7 +108,6 @@ public class GenerarLista {
         	
             flujo.flush();
             JOptionPane.showMessageDialog(null, "Fichero " + idFichero + " creado correctamente.");
-            salir = false;
         } catch (IOException e) {
             System.out.println(e.getMessage());
         };
@@ -125,19 +123,19 @@ public class GenerarLista {
         List<Unidade> listado = uc.findAll();
         
         try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
-        	flujo.write("ID;" + "Unidad;" + "NumeroMax;");
+        	flujo.write("ID;" + "Unidad;" + "NumeroMax;" + "Tutor;");
         	flujo.newLine();
         	for (Unidade u : listado) {
 				flujo.write(u.getCodUnidad() + ";"
 						+ u.getTutoria() + ";"
-						+ u.getNumMaxAlum() + ";");
+						+ u.getNumMaxAlum() + ";"
+						+ u.getTutore().getCodTutor() + ";");
 				flujo.newLine();
 			}
         	
         	
             flujo.flush();
             JOptionPane.showMessageDialog(null, "Fichero " + idFichero + " creado correctamente.");
-            salir = false;
         } catch (IOException e) {
             System.out.println(e.getMessage());
         };
