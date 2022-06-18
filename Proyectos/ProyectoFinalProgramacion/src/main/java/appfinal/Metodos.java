@@ -216,6 +216,7 @@ public class Metodos {
         
         switch (variable) {
             case 1:
+            	// Mostrar todos
             	List<Unidade> listaUnidades = uc.findAll();
             	
             	for (Unidade u : listaUnidades) {
@@ -227,6 +228,7 @@ public class Metodos {
             case 0:
             	int id = 0;
             	
+            	// Mostrar los que tengan el ID
             	id = Integer.parseInt(JOptionPane.showInputDialog("Indique el ID del usuario"));
             	JOptionPane.showMessageDialog(null, "La unidad " + uc.findByPK(id).getTutoria() + " con ID " + uc.findByPK(id).getCodUnidad() + " permite un máximo de " + uc.findByPK(id).getNumMaxAlum() + " alumnos"
         				+ ". El tutor de la unidad es " + uc.findByPK(id).getTutore().getNomTutor() + " " + uc.findByPK(id).getTutore().getApe1Tutor() + " " + uc.findByPK(id).getTutore().getApe2Tutor());
